@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Button from '@components/Button'
+import { css } from '@emotion/react'
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
+        <p className="mt-10">
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
@@ -53,6 +54,13 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <button
+          css={css`
+            background-color: red;
+          `}
+        >
+          a
+        </button>
       </main>
 
       <footer className={styles.footer}>
