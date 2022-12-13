@@ -1,25 +1,19 @@
 import { useEffect, useState } from 'react'
-import { getProducts } from './api/products/get-products'
-import { IProduct } from '../apis/types/product.type'
-import axios from 'axios'
-import { api } from '@apis/api'
+import { useQuery } from 'react-query'
+import { getProducts } from '@apis/products'
 
 export default function Products() {
   const [index, setIndex] = useState(0)
-  const [products, setProducts] = useState<IProduct[]>([])
+  const { data, isLoading } = useQuery(`products`, getProducts)
 
-  useEffect(() => {
-    fetchProducts()
-  }, [])
+  console.log('data', data)
+  useEffect(() => {}, [])
 
-  const fetchProducts = async () => {
-    const { data }: { data: IProduct[] } = await api.get(
-      `products/get-products`
-    )
-    setProducts(data)
-  }
-
-  console.log(products)
-
-  return <></>
+  return (
+    <>
+      {data?.map((pd, i) => (
+        <div key={i}>{pd.name}</div>
+      ))}
+    </>
+  )
 }

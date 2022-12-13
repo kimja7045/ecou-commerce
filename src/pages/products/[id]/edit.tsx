@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
 import { convertFromRaw, convertToRaw } from 'draft-js'
 import axios from 'axios'
+import { api } from '@apis/api'
 
 const images = [
   {
@@ -52,7 +53,7 @@ export default function ProductEdit() {
 
   const handleSave = async () => {
     if (editorState) {
-      await axios.post(`/api/update-product`, {
+      await api.post(`products/update-product`, {
         id: Number(productId),
         description: JSON.stringify(
           convertToRaw(editorState.getCurrentContent())
