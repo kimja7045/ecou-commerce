@@ -1,0 +1,25 @@
+import { RecoilState, useRecoilState } from 'recoil'
+import { useQuery } from 'react-query'
+import { useEffect } from 'react'
+
+export const useRecoilQuery = <T>(
+  recoilState: RecoilState<T>,
+  key: string,
+  getFunc: () => Promise<T>,
+  staleTime = Infinity,
+  suspense = true
+) => {
+  const [state, setState] = useRecoilState(recoilState)
+  const { isLoading, data, refetch } = useQuery(key, getFunc, {
+    staleTime,
+    suspense,
+  })
+
+  useEffect(() => {
+    if (!data) return
+
+    setState(data)
+  }, [data, setState])
+
+  return { state, isLoading, refetch }
+}

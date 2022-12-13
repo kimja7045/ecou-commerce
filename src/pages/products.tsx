@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
-import { getProducts } from '@apis/products'
+import useProducts from '@hooks/product/useProducts'
 
 export default function Products() {
-  const [index, setIndex] = useState(0)
-  const { data, isLoading } = useQuery(`products`, getProducts)
+  const products = useProducts()
 
-  console.log('data', data)
   useEffect(() => {}, [])
 
   return (
     <>
-      {data?.map((pd, i) => (
+      {products?.map((pd, i) => (
         <div key={i}>{pd.name}</div>
       ))}
     </>
