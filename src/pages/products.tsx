@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getProducts } from './api/products/get-products'
-import { IProduct } from './types/product.type'
+import { IProduct } from '../apis/types/product.type'
 import axios from 'axios'
 import { api } from '@apis/api'
 

@@ -1,9 +1,10 @@
 export interface IProduct {
   id: number
   name: string
-  contents?: string
+  description: string
   categoryId: number
   createdAt: Date
-  imageUrl: string
+  imageUrl?: string
   price: number
+  isVisible: boolean
 }

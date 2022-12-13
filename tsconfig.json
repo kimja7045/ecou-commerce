@@ -18,11 +18,14 @@
 
 //    "baseUrl": ".",
     "paths": {
-      "@components/*": ["./components/*"],
       "@apis/*": ["./apis/*"],
+      "@atoms/*": ["./atoms/*"],
+      "@components/*": ["./components/*"],
+      "@config": ["./config/*"],
       "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@pages/*": ["./pages/*"],
       "@utils/*": ["./utils/*"],
-      "@config": ["./config/*"]
     },
     "types": ["@emotion/react/types/css-prop"]
   },

@@ -37,10 +37,10 @@ export default function Product() {
       fetch(`/api/get-product?id=${productId}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.items.contents) {
+          if (data.items.description) {
             setEditorState(
               EditorState.createWithContent(
-                convertFromRaw(JSON.parse(data.items.contents))
+                convertFromRaw(JSON.parse(data.items.description))
               )
             )
           } else {

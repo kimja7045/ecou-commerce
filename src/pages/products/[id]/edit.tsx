@@ -37,10 +37,10 @@ export default function ProductEdit() {
       fetch(`/api/get-product?id=${productId}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.items.contents) {
+          if (data.items.description) {
             setEditorState(
               EditorState.createWithContent(
-                convertFromRaw(JSON.parse(data.items.contents))
+                convertFromRaw(JSON.parse(data.items.description))
               )
             )
           } else {
@@ -54,7 +54,9 @@ export default function ProductEdit() {
     if (editorState) {
       await axios.post(`/api/update-product`, {
         id: Number(productId),
-        contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
+        description: JSON.stringify(
+          convertToRaw(editorState.getCurrentContent())
+        ),
       })
       alert('수정이 완료되었습니다.')
     }
