@@ -1,14 +1,6 @@
 import { productsState } from '@atoms/products'
-import { useRecoilQuery } from '@hooks/useRequilQuery'
-import { getProducts } from '@apis/products'
+import { useRecoilValue } from 'recoil'
 
 export default function useProducts() {
-  // return useRecoilValue(productsState)
-  const { state: products } = useRecoilQuery(
-    productsState,
-    `products`,
-    getProducts
-  )
-
-  return products
+  return useRecoilValue(productsState)
 }
