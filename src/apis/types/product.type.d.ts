@@ -4,7 +4,7 @@ export interface IProduct {
   description: string
   categoryId: number
   createdAt: Date
-  imageUrl?: string
+  image?: string
   price: number
   isVisible: boolean
 }

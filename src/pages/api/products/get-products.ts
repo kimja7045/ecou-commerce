@@ -8,7 +8,7 @@ export async function fetchProducts() {
     description: '',
     categoryId: 1,
     createdAt: new Date(),
-    imageUrl: 'https://picsum.photos/500/500',
+    image: 'https://picsum.photos/500/500',
     price: Math.floor(Math.random() * (100000 - 20000) + 20000),
     isVisible: true,
   }))

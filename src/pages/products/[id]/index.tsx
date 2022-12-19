@@ -1,5 +1,4 @@
 import CustomEditor from '@components/Editor'
-import styled from '@emotion/styled'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -7,7 +6,6 @@ import Carousel from 'nuka-carousel'
 import { useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
 import { convertFromRaw, convertToRaw } from 'draft-js'
-import axios from 'axios'
 
 const images = [
   {

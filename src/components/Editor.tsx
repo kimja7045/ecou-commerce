@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { Dispatch, SetStateAction } from 'react'
 import { EditorProps, EditorState } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import Button from './Button'
+import Button from './common/Button'
 
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((module) => module.Editor),
