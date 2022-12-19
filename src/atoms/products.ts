@@ -11,6 +11,7 @@ export const nextProductId = selector({
   get: ({ get }) => {
     const products = get(productsState)
     const lastId = products.at(-1)?.id ?? 0
+
     return lastId + 1
   },
 })
