@@ -3,9 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Carousel from 'nuka-carousel'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
 import { convertFromRaw, convertToRaw } from 'draft-js'
+import { getProduct } from '@apis/products'
 
 const images = [
   {
@@ -30,23 +31,24 @@ export default function Product() {
     undefined
   )
 
-  useEffect(() => {
+  const fetchProduct = useCallback(async () => {
     if (productId) {
-      fetch(`/api/get-product?id=${productId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.items.description) {
-            setEditorState(
-              EditorState.createWithContent(
-                convertFromRaw(JSON.parse(data.items.description))
-              )
-            )
-          } else {
-            setEditorState(EditorState.createEmpty())
-          }
-        })
+      const product = await getProduct(Number(productId))
+      if (product && product.description) {
+        // setEditorState(
+        //   EditorState.createWithContent(
+        //     convertFromRaw(JSON.parse(product.description))
+        //   )
+        // )
+      } else {
+        // setEditorState(EditorState.createEmpty())
+      }
     }
-  }, [])
+  }, [productId])
+
+  useEffect(() => {
+    fetchProduct()
+  }, [fetchProduct])
 
   return (
     <>
