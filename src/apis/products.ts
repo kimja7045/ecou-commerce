@@ -17,3 +17,8 @@ export async function getProducts({
   })
   return response.data
 }
+
+export async function getProduct(id: number) {
+  const response = await api.get<IProduct>(`products/get-product?id=${id}`)
+  return response.data
+}
