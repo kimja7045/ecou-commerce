@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import useProducts from '@hooks/product/useProducts'
-import { useInfiniteQuery, useQuery } from 'react-query'
+import { useMemo } from 'react'
+import { useInfiniteQuery } from 'react-query'
 import { getProducts } from '@apis/products'
 import Image from 'next/image'
 import { IProduct } from '@apis/types/product.type'

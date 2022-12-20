@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilCallback, useSetRecoilState } from 'recoil'
 import { nextProductId, productsState } from '@atoms/products'
 
 export default function useProductsActions() {

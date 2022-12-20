@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiResponse } from 'next'
 import { IProduct } from '@apis/types/product.type'
 
 export async function fetchProducts() {
@@ -19,7 +19,6 @@ type ErrorData = {
 }
 
 export default async function handler(
-  req: NextApiRequest,
   res: NextApiResponse<IProduct[] | ErrorData>
 ) {
   try {
