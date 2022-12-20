@@ -1,5 +1,4 @@
-This is a [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bootstrapped with [`nextJs`]
-
+This [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bootstrapped with [`nextJs`]
 
 ## Tech Stack
 
@@ -8,19 +7,19 @@ This is a [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bo
 - NextJs
 - TypeScript
 - Recoil
-- TailwindCss
+- TailwindCSS
 - Emotion
 - React Query
 
-
 ### Backend
 
-- Django(drf) 
+- Django(drf)
 - PostgreSQL
 - Swagger
 
 ### Infrastructure
- - AWS
+
+- Vercel, AWS
 
 ## Getting Started
 
@@ -35,11 +34,3 @@ First, run the development server:
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
