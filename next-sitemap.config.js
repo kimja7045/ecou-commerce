@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: [],
+  siteUrl: ['https://ecou-commerce.vercel.app/'],
   generateRobotsTxt: true,
 }
