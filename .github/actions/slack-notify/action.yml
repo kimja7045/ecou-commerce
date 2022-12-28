@@ -1,5 +1,3 @@
-# slack-notify.yml
-
 name: 'slack-notify'
 description: 'slack-notify'
 # 아까 `actions/setup-node@v2`를 사용할 때 with로 node-version을 넘겼던 거 기억나시나요?
