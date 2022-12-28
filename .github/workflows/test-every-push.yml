@@ -81,7 +81,7 @@ jobs:
         if: ${{ always() }}
       - run: yarn build
         if: ${{ always() }}
-      - run: echo ${{ secrets.SLACK_INCOMING_URL }}
+      - run: echo ${{ secrets.SLACK_INCOMING_URL }} ${{ secrets.NODE_VERSION }}
         if: ${{ success() }}
       - name: Send slack when failed
         # 실패했을 때 실행되겠죠?
