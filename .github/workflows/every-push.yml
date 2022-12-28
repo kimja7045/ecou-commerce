@@ -1,7 +1,7 @@
 # test-every-push.yml
 
 # workflow의 이름. 나중에 해당 값을 사용할 수 있기 때문에 저는 유니크하게 사용합니다.
-name: 'test-every-push'
+name: 'every-push'
 
 # workflow를 동작하게하는 trigger입니다.
 # repository에 push 이벤트가 발생할 때마다 실행될 거예요.
@@ -81,8 +81,6 @@ jobs:
         if: ${{ always() }}
       - run: yarn build
         if: ${{ always() }}
-      - run: echo ${{ secrets.SLACK_INCOMING_URL }} ${{ secrets.NODE_VERSION }}
-        if: ${{ success() }}
       - name: Send slack when failed
         # 실패했을 때 실행되겠죠?
         if: ${{ failure() }}
