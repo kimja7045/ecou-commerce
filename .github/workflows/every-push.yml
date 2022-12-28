@@ -1,6 +1,4 @@
-# test-every-push.yml
-
-# workflow의 이름. 나중에 해당 값을 사용할 수 있기 때문에 저는 유니크하게 사용합니다.
+# workflow의 이름. 나중에 해당 값을 사용할 수 있기 때문에 유니크하게 사용합니다.
 name: 'every-push'
 
 # workflow를 동작하게하는 trigger입니다.
@@ -13,9 +11,9 @@ on: push
 # 그리고 각각 독립적으로도 실행할 수도 있어요.
 # 해당 예제는 간단한 workflow이므로 하나의 job만 갖도록 할게요.
 jobs:
-  test:
+  build:
     # job의 이름을 정해줍니다.
-    name: Test lint, typecheck, build
+    name: check lint, typecheck, build
     # 저는 해당 job을 리눅스 환경에서 사용할 거예요. 다른 플랫폼이 올 수도 있겠죠?
     runs-on: ubuntu-latest
 
