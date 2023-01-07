@@ -1,4 +1,4 @@
-This [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bootstrapped with [`nextJs`]
+[Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project
 
 ## Tech Stack
 

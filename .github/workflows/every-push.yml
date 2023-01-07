@@ -80,7 +80,7 @@ jobs:
       - run: yarn build
         if: ${{ always() }}
 
-      # 토이프로젝트 슬랙이라 팀원들한테 알림이 자꾸 뜨는 관계로 주석처리하였습니다.
+      # 토이프로젝트 슬랙이라 팀원들한테 알림이 계속 발생하는 관계로 주석처리하였습니다.
       # - name: Send slack when failed
       #   if: ${{ failure() }}
       #   # 직접 '만든' Action이므로 uses 키워드를 이용해서 아래 경로를 입력해줍니다.

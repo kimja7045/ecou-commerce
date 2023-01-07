@@ -23,7 +23,6 @@
       "@apis/*": ["./apis/*"],
       "@atoms/*": ["./atoms/*"],
       "@components/*": ["./components/*"],
-      "@config": ["./config/*"],
       "@constants/*": ["./constants/*"],
       "@hooks/*": ["./hooks/*"],
       "@pages/*": ["./pages/*"],

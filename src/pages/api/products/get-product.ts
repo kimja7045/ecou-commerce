@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { IProduct } from '@apis/types/product.type'
+import { IProduct } from '../../../api/types/product.type'
 
 async function getProduct(id: number): Promise<IProduct> {
   return {

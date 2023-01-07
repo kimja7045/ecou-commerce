@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
-import { getProducts } from '@apis/products'
+import { getProducts } from '../../api/product'
 import Image from 'next/image'
-import { IProduct } from '@apis/types/product.type'
+import { IProduct } from '../../api/types/product.type'
 
 export default function Index() {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(

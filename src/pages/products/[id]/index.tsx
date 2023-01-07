@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Carousel from 'nuka-carousel'
 import { useCallback, useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
-import { getProduct } from '@apis/products'
+import { getProduct } from '../../../api/product'
 
 const images = [
   {
