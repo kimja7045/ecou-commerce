@@ -1,5 +1,5 @@
-import { api } from '@apis/api'
-import { IProduct } from '@apis/types/product.type'
+import { index } from './/index'
+import { IProduct } from './/types/product.type'
 
 export async function getProducts({
   limit = 9,
@@ -8,7 +8,7 @@ export async function getProducts({
   limit?: number
   cursor?: number
 }) {
-  const response = await api.get<IProduct[]>(`products/get-products`, {
+  const response = await index.get<IProduct[]>(`products/get-products`, {
     params: {
       _sort: 'id:DESC',
       _limit: limit,
@@ -19,6 +19,6 @@ export async function getProducts({
 }
 
 export async function getProduct(id: number) {
-  const response = await api.get<IProduct>(`products/get-product?id=${id}`)
+  const response = await index.get<IProduct>(`products/get-product?id=${id}`)
   return response.data
 }
