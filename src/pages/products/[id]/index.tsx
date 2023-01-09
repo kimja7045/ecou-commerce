@@ -61,6 +61,7 @@ export default function Product() {
         <meta property="og:description" content="사이트 설명" />
         <meta property="og:image" content="썸네일주소" />
       </Head>
+
       <Carousel
         autoplay
         speed={10}
@@ -70,9 +71,9 @@ export default function Product() {
         slidesToShow={3}
         animation="zoom"
       >
-        {images.map((img, i) => (
+        {images.map((img) => (
           <Image
-            key={i}
+            key={img.original}
             src={img.original}
             alt="image"
             width={1000}
@@ -80,9 +81,10 @@ export default function Product() {
           />
         ))}
       </Carousel>
-      <div>
+
+      <div className="flex">
         {images.map((img, idx) => (
-          <div key={idx} className="display:flex" onClick={() => setIndex(idx)}>
+          <div key={idx} onClick={() => setIndex(idx)}>
             <Image src={img.original} alt="image" width={100} height={60} />
           </div>
         ))}

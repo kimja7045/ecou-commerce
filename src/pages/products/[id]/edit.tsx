@@ -54,7 +54,7 @@ export default function ProductEdit() {
 
   const handleSave = async () => {
     if (editorState) {
-      await index.post(`products/update-product`, {
+      await api.post(`products/update-product`, {
         id: Number(productId),
         description: JSON.stringify(
           convertToRaw(editorState.getCurrentContent())

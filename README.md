@@ -13,9 +13,11 @@
 
 ### Backend
 
-- Django(drf)
-- PostgreSQL
-- Swagger
+- Prisma, Planet Scale
+
+  -> 이후에 아래 스택으로 변경예정
+
+- Django(drf), PostgreSQL, Swagger로 변경 예정
 
 ### Infrastructure
 
