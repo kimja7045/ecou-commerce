@@ -22,7 +22,7 @@ const images = [
   },
 ]
 
-export default function Product() {
+export default function ProductDetailPage() {
   const [index, setIndex] = useState(0)
   const router = useRouter()
   const { id: productId } = router.query

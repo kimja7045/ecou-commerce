@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ['picsum.photos'],
   },
+  // rewrites: () => {},
 }
 
 module.exports = nextConfig

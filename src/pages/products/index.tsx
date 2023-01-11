@@ -2,9 +2,9 @@ import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { getProducts } from '../../api/product'
 // import Image from 'next/image'
-import { IProduct } from '../../api/types/product.type'
+import { IProduct } from '../../types/product.type'
 
-export default function Index() {
+export default function ProductListPage() {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     'products',
     ({ pageParam }) => getProducts({ cursor: pageParam }),

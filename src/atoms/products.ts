@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { IProduct } from '../api/types/product.type'
+import { IProduct } from '../types/product.type'
 
 export const productsState = atom<IProduct[]>({
   key: 'productsState',
