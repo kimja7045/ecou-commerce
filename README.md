@@ -1,4 +1,4 @@
-This [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bootstrapped with [`nextJs`]
+[Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project
 
 ## Tech Stack
 
@@ -13,9 +13,11 @@ This [Ecou Commerce](https://github.com/kimja7045/ecou-commerce) project bootstr
 
 ### Backend
 
-- Django(drf)
-- PostgreSQL
-- Swagger
+- Prisma, Planet Scale
+
+  -> 이후에 아래 스택으로 변경예정
+
+- Django(drf), PostgreSQL, Swagger로 변경 예정
 
 ### Infrastructure
 

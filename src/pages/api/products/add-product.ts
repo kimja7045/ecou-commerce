@@ -1,30 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Client } from '@notionhq/client'
-
-const notion = new Client({
-  auth: process?.env?.NEXT_PUBLIC_NOTION_SECRET,
-})
-
-const databaseId = process.env.NEXT_PUBLIC_NOTION_PRODUCT
 
 async function addItem(name: string) {
   try {
-    if (typeof databaseId === 'string') {
-      await notion.pages.create({
-        parent: { database_id: databaseId },
-        properties: {
-          title: [
-            {
-              text: {
-                content: name,
-              },
-            },
-          ],
-        },
-      })
-      // console.log(response)
-    }
+    console.log(name)
   } catch (err) {
     console.log(JSON.stringify(err))
   }

@@ -2,9 +2,9 @@ export interface IProduct {
   id: number
   name: string
   description: string
-  categoryId: number
+  category_id: string
   createdAt: Date
-  image?: string
+  image_url?: string
   price: number
   isVisible: boolean
 }

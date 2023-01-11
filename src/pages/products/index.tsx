@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
-import { getProducts } from '@apis/products'
-import Image from 'next/image'
-import { IProduct } from '@apis/types/product.type'
+import { getProducts } from '../../api/product'
+// import Image from 'next/image'
+import { IProduct } from '../../types/product.type'
 
-export default function Index() {
+export default function ProductListPage() {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     'products',
     ({ pageParam }) => getProducts({ cursor: pageParam }),
@@ -29,23 +29,23 @@ export default function Index() {
             (pd, i) =>
               i < 9 && (
                 <div key={pd.id}>
-                  <Image
+                  {/* <Image
                     className="rounded"
-                    src={pd.image ?? ''}
+                    src={pd?.image_url ?? ''}
                     alt={pd.name}
                     width={300}
                     height={200}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8p6NTDwAEnQGnwx5bWgAAAABJRU5ErkJggg=="
-                  />
+                  /> */}
                   <div className="flex">
                     <span>{pd.name}</span>
                     <span className="ml-auto">
-                      {pd.price.toLocaleString('ko-KR')}원
+                      {pd?.price?.toLocaleString('ko-KR')}원
                     </span>
                   </div>
                   <span className="text-zinc-400">
-                    {pd.categoryId === 1 && '의류'}
+                    {pd.category_id === '1' && '의류'}
                   </span>
                 </div>
               )

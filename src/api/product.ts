@@ -1,5 +1,5 @@
-import { api } from '@apis/api'
-import { IProduct } from '@apis/types/product.type'
+import { api } from "./api"
+import { IProduct } from "../types/product.type"
 
 export async function getProducts({
   limit = 9,

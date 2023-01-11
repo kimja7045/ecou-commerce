@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -20,16 +20,16 @@
 
     //    "baseUrl": ".",
     "paths": {
-      "@apis/*": ["./apis/*"],
-      "@atoms/*": ["./atoms/*"],
-      "@components/*": ["./components/*"],
-      "@config": ["./config/*"],
-      "@constants/*": ["./constants/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@pages/*": ["./pages/*"],
-      "@utils/*": ["./utils/*"]
+      "@/*": ["./*"],
+      "@apis/*": ["apis/*"],
+      "@atoms/*": ["atoms/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"]
     },
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop", "jest"]
   },
   "include": ["next-env.d.ts", "app.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],

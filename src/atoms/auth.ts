@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import { IUser } from '@apis/types/user.type'
+import { IUser } from '../types/user.type'
 
 interface AuthState {
   user: IUser | null

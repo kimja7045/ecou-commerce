@@ -7,8 +7,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
 // import { convertFromRaw, convertToRaw } from 'draft-js'
 import { convertToRaw } from 'draft-js'
-import { api } from '@apis/api'
-import { getProduct } from '@apis/products'
+import { api } from '../../../api/api'
+import { getProduct } from '../../../api/product'
 
 const images = [
   {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { authState } from '@atoms/auth'
-import { IUser } from '@apis/types/user.type'
+import { IUser } from "../../types/user.type";
 
 export default function UseAuthActions() {
   const set = useSetRecoilState(authState)

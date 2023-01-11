@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 // import { useRef } from 'react'
 
-function add() {
+function ProductAddPage() {
   // const inputRef = useRef<HTMLInputElement | null>(null)
 
   // const handleClick = async () => {
@@ -27,4 +27,4 @@ function add() {
   )
 }
 
-export default add
+export default ProductAddPage

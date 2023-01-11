@@ -10,7 +10,7 @@ export default function useProductsActions() {
       async (
         name: string,
         description: string,
-        categoryId: number,
+        category_id: string,
         price: number
       ) => {
         const nextId = await snapshot.getPromise(nextProductId)
@@ -19,7 +19,7 @@ export default function useProductsActions() {
             id: nextId,
             name,
             description,
-            categoryId,
+            category_id,
             price,
             createdAt: new Date(),
             isVisible: true,
