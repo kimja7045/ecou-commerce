@@ -4,10 +4,11 @@ import { getProducts } from '../../api/product'
 // import Image from 'next/image'
 import { IProduct } from '../../types/product.type'
 
+const TAKE = 9
 export default function ProductListPage() {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     'products',
-    ({ pageParam }) => getProducts({ cursor: pageParam }),
+    ({ pageParam }) => getProducts({ skip: 0, take: TAKE }),
     {
       getNextPageParam: (lastPage) =>
         lastPage.length === 9 ? lastPage.at(-1)?.id : undefined,

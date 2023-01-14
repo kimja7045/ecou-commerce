@@ -1,18 +1,17 @@
-import { api } from "./api"
-import { IProduct } from "../types/product.type"
+import { api } from './api'
+import { IProduct } from '../types/product.type'
 
 export async function getProducts({
-  limit = 9,
-  cursor,
+  skip,
+  take,
 }: {
-  limit?: number
-  cursor?: number
+  skip?: number
+  take?: number
 }) {
   const response = await api.get<IProduct[]>(`products/get-products`, {
     params: {
-      _sort: 'id:DESC',
-      _limit: limit,
-      id_lt: cursor,
+      skip,
+      take,
     },
   })
   return response.data
