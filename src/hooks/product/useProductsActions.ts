@@ -9,7 +9,7 @@ export default function useProductsActions() {
     ({ snapshot }) =>
       async (
         name: string,
-        description: string,
+        contents: string,
         category_id: string,
         price: number
       ) => {
@@ -18,7 +18,7 @@ export default function useProductsActions() {
           prevState.concat({
             id: nextId,
             name,
-            description,
+            contents,
             category_id,
             price,
             createdAt: new Date(),
