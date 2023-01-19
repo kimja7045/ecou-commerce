@@ -1,5 +1,5 @@
 import { api } from './api'
-import { IProduct } from '../types/product.type'
+import { IProduct } from '@/types/product.type'
 
 export async function getProducts({
   skip,
