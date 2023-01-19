@@ -1,13 +1,10 @@
 import { render } from '@testing-library/react'
 
-// import BasketListPage from "../pages/baskets/index";
-import BasketListPage from "@pages/baskets";
+import BasketListPage from '@pages/baskets'
 
-describe('BasketListPage', ()=> {
-    it('renders tasks', ()=>{
-        if(typeof window !== 'object') return;
-        render((
-            <BasketListPage/>
-        ))
-    })
+describe('장바구니', () => {
+  it('장바구니 목록 화면을 출력한다.', () => {
+    if (typeof window !== 'object') return
+    render(<BasketListPage />)
+  })
 })

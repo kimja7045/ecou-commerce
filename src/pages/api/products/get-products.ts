@@ -20,8 +20,9 @@ export default async function handler(
 ) {
   try {
     const { skip, take } = req.query
-    console.log(req.query)
-    if (!Number.isInteger(skip) || !Number.isInteger(take)) {
+    console.log(skip, take, typeof skip, typeof take)
+
+    if (!Number.isInteger(Number(skip)) || !Number.isInteger(Number(take))) {
       alert('쿼리스트링은 정수입니다.')
     } else {
       const products = await getProducts(Number(skip), Number(take))
