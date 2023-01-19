@@ -1,14 +1,8 @@
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
-<<<<<<< HEAD
-import { getProducts } from '../../api/product'
-import Image from 'next/image'
-import { IProduct } from '../../types/product.type'
-=======
 import { getProducts } from "@/api/product"
 import Image from 'next/image'
 import { IProduct } from "@/types/product.type"
->>>>>>> 9d7e64a865ceb00c77a10d880a6be6e0545bdce3
 
 const TAKE = 9
 export default function ProductListPage() {
