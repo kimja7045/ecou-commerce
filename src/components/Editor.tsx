@@ -1,23 +1,23 @@
-import styled from '@emotion/styled'
-import dynamic from 'next/dynamic'
-import { Dispatch, SetStateAction } from 'react'
-import { EditorProps, EditorState } from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import Button from './Common/Button'
+import styled from '@emotion/styled';
+import dynamic from 'next/dynamic';
+import { Dispatch, SetStateAction } from 'react';
+import { EditorProps, EditorState } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import Button from '@components/Common/Button';
 
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((module) => module.Editor),
   {
     ssr: false,
   }
-)
+);
 
 type CustomEditorProps = {
-  editorState: EditorState
-  readOnly?: boolean
-  onSave?: () => void
-  onEditorStateChange?: Dispatch<SetStateAction<EditorState | undefined>>
-}
+  editorState: EditorState;
+  readOnly?: boolean;
+  onSave?: () => void;
+  onEditorStateChange?: Dispatch<SetStateAction<EditorState | undefined>>;
+};
 
 export default function CustomEditor({
   editorState,
@@ -44,9 +44,9 @@ export default function CustomEditor({
       />
       {!readOnly && <Button onClick={onSave}>Save</Button>}
     </Wrapper>
-  )
+  );
 }
 
 const Wrapper = styled.div`
   padding: 16px;
-`
+`;
