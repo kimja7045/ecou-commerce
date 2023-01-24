@@ -21,11 +21,12 @@
 
     "paths": {
       "@/*": ["./*"],
-      "@apis/*": ["apis/*"],
+      "@api/*": ["api/*"],
       "@atoms/*": ["atoms/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@hooks/*": ["hooks/*"],
+      "@models/*": ["models/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"]
     },
