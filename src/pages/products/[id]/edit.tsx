@@ -7,8 +7,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { EditorState } from 'react-draft-wysiwyg'
 // import { convertFromRaw, convertToRaw } from 'draft-js'
 import { convertToRaw } from 'draft-js'
-import { api } from "@/api/api"
-import { getProduct } from "@/api/product"
+import { api } from '@/api/api'
+import { getProduct } from '@/api/product'
 
 const images = [
   {
@@ -56,9 +56,7 @@ export default function ProductEdit() {
     if (editorState) {
       await api.post(`products/update-product`, {
         id: Number(productId),
-        contents: JSON.stringify(
-          convertToRaw(editorState.getCurrentContent())
-        ),
+        contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       })
       alert('수정이 완료되었습니다.')
     }
