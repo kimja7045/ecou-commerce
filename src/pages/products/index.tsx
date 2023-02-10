@@ -1,10 +1,10 @@
-import { useMemo } from 'react'
-import { useInfiniteQuery } from 'react-query'
-import { getProducts } from '@/api/product'
-import Image from 'next/image'
-import { IProduct } from '@/types/product.type'
+import { useMemo } from 'react';
+import { useInfiniteQuery } from 'react-query';
+import { getProducts } from '@/api/product';
+import Image from 'next/image';
+import { IProduct } from '@/types/product.type';
 
-const TAKE = 9
+const TAKE = 9;
 export default function ProductListPage() {
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     'products',
@@ -13,15 +13,15 @@ export default function ProductListPage() {
     {
       getNextPageParam: (lastPage) =>
         lastPage.length === 9 ? lastPage.at(-1)?.id : undefined,
-    }
-  )
+    },
+  );
 
   const products = useMemo(() => {
     if (!data) {
-      return null
+      return null;
     }
-    return ([] as IProduct[]).concat(...data.pages)
-  }, [data])
+    return ([] as IProduct[]).concat(...data.pages);
+  }, [data]);
 
   return (
     <div className="px-36 my-36">
@@ -50,7 +50,7 @@ export default function ProductListPage() {
                     {pd.category_id === '1' && '의류'}
                   </span>
                 </div>
-              )
+              ),
           )}
         </div>
       )}
@@ -58,12 +58,12 @@ export default function ProductListPage() {
         className="w-full rounded mt-20 bg-zinc-200 p-4"
         onClick={() => {
           if (hasNextPage && !isFetching) {
-            fetchNextPage()
+            fetchNextPage();
           }
         }}
       >
         더보기
       </button>
     </div>
-  )
+  );
 }
