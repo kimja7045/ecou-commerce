@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { getProducts } from '@/api/product';
-import { IProduct } from '@/types/product.type';
+import { IProduct } from '@/types/product';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 
 const TAKE = 9;

@@ -1,20 +1,20 @@
-import { useMemo } from 'react'
-import { useSetRecoilState } from 'recoil'
-import { authState } from '@atoms/auth'
-import { IUser } from "../../types/user.type";
+import { useMemo } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { authState } from '@atoms/auth';
+import { IUser } from '../../types/user';
 
 export default function UseAuthActions() {
-  const set = useSetRecoilState(authState)
+  const set = useSetRecoilState(authState);
 
   return useMemo(
     () => ({
       authorize: (user: IUser) => {
-        set({ user })
+        set({ user });
       },
       logout: () => {
-        set({ user: null })
+        set({ user: null });
       },
     }),
-    [set]
-  )
+    [set],
+  );
 }
