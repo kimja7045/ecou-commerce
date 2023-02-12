@@ -9,7 +9,6 @@ async function getProducts(skip: number, take: number) {
       skip,
       take,
     });
-    console.log(response);
     return response;
   } catch (error) {}
 }
@@ -20,7 +19,6 @@ export default async function handler(
 ) {
   try {
     const { skip, take } = req.query;
-    console.log(skip, take, typeof skip, typeof take);
 
     if (!Number.isInteger(Number(skip)) || !Number.isInteger(Number(take))) {
       alert('쿼리스트링은 정수입니다.');
