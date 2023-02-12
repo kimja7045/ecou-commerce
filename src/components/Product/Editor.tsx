@@ -42,7 +42,7 @@ export default function CustomEditor({
           locale: 'ko',
         }}
       />
-      {/* {!readOnly && <Button onClick={onSave}>Save</Button>} */}
+      {!readOnly && <button onClick={onSave}>Save</button>}
     </Wrapper>
   );
 }
