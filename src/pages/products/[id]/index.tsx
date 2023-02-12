@@ -1,11 +1,11 @@
-import CustomEditor from '@components/Editor'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import Carousel from 'nuka-carousel'
-import { useCallback, useEffect, useState } from 'react'
-import { EditorState } from 'react-draft-wysiwyg'
-import { getProduct } from "@/api/product"
+import CustomEditor from '@/components/Product/Editor';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Carousel from 'nuka-carousel';
+import { useCallback, useEffect, useState } from 'react';
+import { EditorState } from 'react-draft-wysiwyg';
+import { getProduct } from '@/api/product';
 
 const images = [
   {
@@ -20,19 +20,19 @@ const images = [
     original: 'https://picsum.photos/id/1019/1000/600/',
     thumbnail: 'https://picsum.photos/id/1019/250/150/',
   },
-]
+];
 
 export default function ProductDetailPage() {
-  const [index, setIndex] = useState(0)
-  const router = useRouter()
-  const { id: productId } = router.query
+  const [index, setIndex] = useState(0);
+  const router = useRouter();
+  const { id: productId } = router.query;
   const [editorState, setEditorState] = useState<EditorState | undefined>(
-    undefined
-  )
+    undefined,
+  );
 
   const fetchProduct = useCallback(async () => {
     if (productId) {
-      const product = await getProduct(Number(productId))
+      const product = await getProduct(Number(productId));
       if (product && product.contents) {
         // setEditorState(
         //   EditorState.createWithContent(
@@ -43,11 +43,11 @@ export default function ProductDetailPage() {
         // setEditorState(EditorState.createEmpty())
       }
     }
-  }, [productId])
+  }, [productId]);
 
   useEffect(() => {
-    fetchProduct()
-  }, [fetchProduct])
+    fetchProduct();
+  }, [fetchProduct]);
 
   return (
     <>
@@ -97,5 +97,5 @@ export default function ProductDetailPage() {
         />
       )}
     </>
-  )
+  );
 }

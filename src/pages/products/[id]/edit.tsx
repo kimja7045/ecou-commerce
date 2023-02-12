@@ -1,14 +1,14 @@
-import CustomEditor from '@components/Editor'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import Carousel from 'nuka-carousel'
-import { useCallback, useEffect, useState } from 'react'
-import { EditorState } from 'react-draft-wysiwyg'
+import CustomEditor from '@/components/Product/Editor';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Carousel from 'nuka-carousel';
+import { useCallback, useEffect, useState } from 'react';
+import { EditorState } from 'react-draft-wysiwyg';
 // import { convertFromRaw, convertToRaw } from 'draft-js'
-import { convertToRaw } from 'draft-js'
-import { api } from '@/api/api'
-import { getProduct } from '@/api/product'
+import { convertToRaw } from 'draft-js';
+import { api } from '@/api/api';
+import { getProduct } from '@/api/product';
 
 const images = [
   {
@@ -23,19 +23,19 @@ const images = [
     original: 'https://picsum.photos/id/1019/1000/600/',
     thumbnail: 'https://picsum.photos/id/1019/250/150/',
   },
-]
+];
 
 export default function ProductEdit() {
-  const [index, setIndex] = useState(0)
-  const router = useRouter()
-  const { id: productId } = router.query
+  const [index, setIndex] = useState(0);
+  const router = useRouter();
+  const { id: productId } = router.query;
   const [editorState, setEditorState] = useState<EditorState | undefined>(
-    undefined
-  )
+    undefined,
+  );
 
   const fetchProduct = useCallback(async () => {
     if (productId) {
-      const product = await getProduct(Number(productId))
+      const product = await getProduct(Number(productId));
       if (product && product.contents) {
         // setEditorState(
         //   EditorState.createWithContent(
@@ -46,21 +46,21 @@ export default function ProductEdit() {
         // setEditorState(EditorState.createEmpty())
       }
     }
-  }, [productId])
+  }, [productId]);
 
   useEffect(() => {
-    fetchProduct()
-  }, [fetchProduct])
+    fetchProduct();
+  }, [fetchProduct]);
 
   const handleSave = async () => {
     if (editorState) {
       await api.post(`products/update-product`, {
         id: Number(productId),
         contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-      })
-      alert('수정이 완료되었습니다.')
+      });
+      alert('수정이 완료되었습니다.');
     }
-  }
+  };
 
   return (
     <>
@@ -108,5 +108,5 @@ export default function ProductEdit() {
         />
       )}
     </>
-  )
+  );
 }
