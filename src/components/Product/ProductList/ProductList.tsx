@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { IProduct } from '../../../types/product.type.d';
+import { IProduct } from '@/types/product';
 
 type ProductListProps = {
   products: IProduct[] | null;

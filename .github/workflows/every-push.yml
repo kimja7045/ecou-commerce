@@ -22,7 +22,7 @@ jobs:
           # node_modules라는 폴더를 검사하여
           path: node_modules
           # 아래 키값으로 cache가 돼있는지 확인합니다.
-          key: npm-packages-${{ hashFiles('**/package-lock.json') }}
+          key: npm-packages-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install Dependencies
         # 위 step에서 node_modules에 대한 cache 검사를 했잖아요?
@@ -34,16 +34,9 @@ jobs:
         # 그걸로 cache가 hit 됐는지 안 됐는지를 알 수 있나봐요!
         # 그 값이 true가 아닐 때만 yarn install을 하겠죠?
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: yarn install
 
       - run: yarn lint
-        # `if: ${{ always() }}`라는 문법은 무엇일까요?
-        # 만약 `yarn lint`라는 곳에서 에러가 났다고 칩시다.
-        # 그러면 뒤의 typecheck, build를 실행하지 않고 해당 workflow가 끝나버리게 됩니다.
-        # 뒤의 typecheck, build에서도 에러가 있을지도 모르는데 말이죠.
-        # 하지만 ${{ always() }}라는 문법을 사용한다면
-        # `yarn lint`라는 곳에서 에러가 나도 뒤의 typecheck, build까지 다 실행을 해보고 난 뒤 종료합니다.
-        # 그래서 모든 테스트 스크립트에 ${{ always() }}를 붙여줍니다.
         if: ${{ always() }}
       - run: yarn typecheck
         if: ${{ always() }}
