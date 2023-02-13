@@ -32,7 +32,7 @@ export const ProductList = ({ products, onClickMoreBtn }: ProductListProps) => {
                     </span>
                   </div>
                   <span className="text-zinc-400">
-                    {pd.category_id === '1' && '의류'}
+                    {pd.category_id === 1 && '의류'}
                   </span>
                 </div>
               ),

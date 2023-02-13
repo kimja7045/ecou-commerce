@@ -7,7 +7,7 @@ const products: IProduct[] = [
     id: 1,
     name: '상품1',
     contents: '상품설명1',
-    category_id: '1',
+    category_id: 1,
     createdAt: new Date(),
     price: 10000,
     isVisible: true,
