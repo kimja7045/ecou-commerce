@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { IProduct } from '@/types/product';
 
 type ProductListProps = {
-  products: IProduct[] | null;
+  products: IProduct[];
   onClickMoreBtn: React.MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -32,7 +32,7 @@ export const ProductList = ({ products, onClickMoreBtn }: ProductListProps) => {
                     </span>
                   </div>
                   <span className="text-zinc-400">
-                    {pd.category_id === 1 && '의류'}
+                    {pd.category_id === 1 ? '의류' : '기타'}
                   </span>
                 </div>
               ),
