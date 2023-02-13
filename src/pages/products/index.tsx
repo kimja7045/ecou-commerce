@@ -1,14 +1,16 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 
 const TAKE = 9;
+
 export default function ProductListPage() {
+  const [skip, setSkip] = useState(0);
   const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
     'products',
-    () => getProducts({ skip: 0, take: TAKE }),
+    () => getProducts({ skip, take: TAKE }),
     // ({ pageParam }) => getProducts({ skip: 0, take: TAKE }),
     {
       getNextPageParam: (lastPage) =>

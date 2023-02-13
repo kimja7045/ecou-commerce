@@ -9,9 +9,10 @@ async function getProducts(skip: number, take: number) {
       skip,
       take,
     });
-    console.log(response);
     return response;
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export default async function handler(
@@ -20,14 +21,19 @@ export default async function handler(
 ) {
   try {
     const { skip, take } = req.query;
-    console.log(skip, take, typeof skip, typeof take);
 
     if (!Number.isInteger(Number(skip)) || !Number.isInteger(Number(take))) {
-      alert('쿼리스트링은 정수입니다.');
-    } else {
-      const products = await getProducts(Number(skip), Number(take));
-      res.status(200).json(products);
+      res.status(400).json({ message: 'skip or take is number type' });
+      return;
     }
+
+    if (!skip || !take) {
+      res.status(400).json({ message: 'no skip or take' });
+      return;
+    }
+
+    const products = await getProducts(Number(skip), Number(take));
+    res.status(200).json(products);
   } catch (err) {
     res.status(400).json({ message: 'Failed' });
   }

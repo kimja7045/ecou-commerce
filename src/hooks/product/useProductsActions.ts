@@ -1,19 +1,19 @@
-import { useMemo } from 'react'
-import { useRecoilCallback, useSetRecoilState } from 'recoil'
-import { nextProductId, productsState } from '@atoms/products'
+import { useMemo } from 'react';
+import { useRecoilCallback, useSetRecoilState } from 'recoil';
+import { nextProductId, productsState } from '@atoms/products';
 
 export default function useProductsActions() {
-  const set = useSetRecoilState(productsState)
+  const set = useSetRecoilState(productsState);
   // const nextId = useRecoilValue(nextProductId)
   const add = useRecoilCallback(
     ({ snapshot }) =>
       async (
         name: string,
         contents: string,
-        category_id: string,
-        price: number
+        category_id: number,
+        price: number,
       ) => {
-        const nextId = await snapshot.getPromise(nextProductId)
+        const nextId = await snapshot.getPromise(nextProductId);
         set((prevState) =>
           prevState.concat({
             id: nextId,
@@ -23,11 +23,11 @@ export default function useProductsActions() {
             price,
             createdAt: new Date(),
             isVisible: true,
-          })
-        )
+          }),
+        );
       },
-    [set]
-  )
+    [set],
+  );
 
   return useMemo(
     () => ({
@@ -37,10 +37,10 @@ export default function useProductsActions() {
       toggleVisible: (id: number) =>
         set((prevState) =>
           prevState.map((pd) =>
-            pd.id === id ? { ...pd, isVisible: !pd.isVisible } : pd
-          )
+            pd.id === id ? { ...pd, isVisible: !pd.isVisible } : pd,
+          ),
         ),
     }),
-    [add, set]
-  )
+    [add, set],
+  );
 }
