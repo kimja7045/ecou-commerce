@@ -12,7 +12,7 @@ export const ProductList = ({ products, onClickMoreBtn }: ProductListProps) => {
     <div className="px-36 my-36">
       {products && (
         <div className="grid grid-cols-3 gap-5">
-          {products.map((pd, i) => (
+          {products.map((pd) => (
             <div key={pd.id}>
               <Image
                 className="rounded"
