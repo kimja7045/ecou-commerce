@@ -1,38 +1,25 @@
-import { useMemo, useState } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { useState, useCallback, useEffect } from 'react';
 import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 
-const TAKE = 9;
+const TAKE_PRODUCT_COUNT = 9;
 
 export default function ProductListPage() {
   const [skip, setSkip] = useState(0);
-  const { data, hasNextPage, isFetching, fetchNextPage } = useInfiniteQuery(
-    'products',
-    () => getProducts({ skip, take: TAKE }),
-    // ({ pageParam }) => getProducts({ skip: 0, take: TAKE }),
-    {
-      getNextPageParam: (lastPage) =>
-        lastPage.length === 9 ? lastPage.at(-1)?.id : undefined,
-    },
-  );
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-  const products = useMemo(() => {
-    if (!data) {
-      return null;
-    }
-    return ([] as IProduct[]).concat(...data.pages);
-  }, [data]);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-  return (
-    <ProductList
-      products={products}
-      onClickMoreBtn={() => {
-        if (hasNextPage && !isFetching) {
-          fetchNextPage();
-        }
-      }}
-    />
-  );
+  const fetchProducts = useCallback(async () => {
+    const newProducts = await getProducts({ skip, take: TAKE_PRODUCT_COUNT });
+    setProducts(products.concat(newProducts));
+
+    const next = skip + TAKE_PRODUCT_COUNT;
+    setSkip(next);
+  }, [skip, products]);
+
+  return <ProductList products={products} onClickMoreBtn={fetchProducts} />;
 }
