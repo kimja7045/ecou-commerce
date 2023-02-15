@@ -15,13 +15,13 @@
 
 - Prisma, Planet Scale
 
-  -> 이후에 아래 스택으로 변경예정
+  -> 이후에 아래 스택으로 변경예정입니다.
 
-- Django(drf), PostgreSQL, Swagger로 변경 예정
+- Django(drf), PostgreSQL, Swagger
 
 ### Infrastructure
 
-- Vercel, AWS
+- Github Actions, Vercel, AWS
 
 ## Getting Started
 
