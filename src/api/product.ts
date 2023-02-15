@@ -5,8 +5,8 @@ export async function getProducts({
   skip,
   take,
 }: {
-  skip?: number;
-  take?: number;
+  skip: number;
+  take: number;
 }) {
   const response = await api.get<IProduct[]>(`products/get-products`, {
     params: {

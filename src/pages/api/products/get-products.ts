@@ -22,13 +22,13 @@ export default async function handler(
   try {
     const { skip, take } = req.query;
 
-    if (!Number.isInteger(Number(skip)) || !Number.isInteger(Number(take))) {
-      res.status(400).json({ message: 'skip or take is number type' });
+    if (!skip || !take) {
+      res.status(400).json({ message: 'no skip or take' });
       return;
     }
 
-    if (!skip || !take) {
-      res.status(400).json({ message: 'no skip or take' });
+    if (!Number.isInteger(Number(skip)) || !Number.isInteger(Number(take))) {
+      res.status(400).json({ message: 'skip or take is number type' });
       return;
     }
 
