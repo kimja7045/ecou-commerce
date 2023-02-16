@@ -2,8 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
-
-const TAKE_PRODUCT_COUNT = 9;
+import { TAKE_PRODUCT_COUNT } from '@/constants/products';
 
 export default function ProductListPage() {
   const [skip, setSkip] = useState(0);
