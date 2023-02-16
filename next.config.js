@@ -6,9 +6,9 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'raw.githubusercontent.com', 'cdn.shopify.com'],
   },
   // rewrites: () => {},
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

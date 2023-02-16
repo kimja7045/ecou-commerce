@@ -1,4 +1,5 @@
 import { PrismaClient, Prisma } from '@prisma/client';
+import { getRandom } from './helper';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +11,7 @@ const productData: Prisma.productsCreateInput[] = Array.apply(
   contents: `This is a Dark Jean ${index + 1}`,
   category_id: 1,
   image_url: 'https://picsum.photos/500/500',
-  price: Math.floor(Math.random() * (100000 - 20000) + 20000),
+  price: getRandom(100000, 20000),
 }));
 
 async function main() {
