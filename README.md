@@ -7,13 +7,14 @@
 - NextJs
 - TypeScript
 - Recoil
+- React Query
 - TailwindCSS
 - Emotion
-- React Query
+- Mantine
 
 ### Backend
 
-- Prisma, Planet Scale
+- Prisma, PlanetScale
 
   -> 이후에 아래 스택으로 변경예정입니다.
 
