@@ -17,6 +17,6 @@ const products: IProduct[] = [
 describe('상품', () => {
   it('목록을 출력합니다.', () => {
     if (typeof window !== 'object') return;
-    render(<ProductList products={products} onClickMoreBtn={() => null} />);
+    render(<ProductList products={products} />);
   });
 });
