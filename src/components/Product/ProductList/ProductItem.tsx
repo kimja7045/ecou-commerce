@@ -5,12 +5,12 @@ import { CATEGORY_MAP } from '@/constants/products';
 
 const ProductItem = ({ image_url, name, price, category_id }: IProduct) => {
   return (
-    <div className="max-w-310">
+    <div className="max-w-xs">
       <Image
         className="rounded"
         src={image_url ?? ''}
         alt={name}
-        width={310}
+        width={320}
         height={390}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8p6NTDwAEnQGnwx5bWgAAAABJRU5ErkJggg=="
