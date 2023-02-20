@@ -1,33 +1,33 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 async function addItem(name: string) {
   try {
-    console.log(name)
+    console.log(name);
   } catch (err) {
-    console.log(JSON.stringify(err))
+    console.log('addItem err\n' + JSON.stringify(err));
   }
 }
 
 type Data = {
-  message: string
-}
+  message: string;
+};
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
-  const { name } = req.body
+  const { name } = req.body;
   if (!name) {
-    return res.status(400).json({ message: 'name is required.' })
+    return res.status(400).json({ message: 'name is required.' });
   }
 
   try {
-    await addItem(String(name))
-    const message = `상품 ${name}이 추가되었습니다.`
-    res.status(200).json({ message })
-    alert(message)
+    await addItem(String(name));
+    const message = `상품 ${name}이 추가되었습니다.`;
+    res.status(200).json({ message });
+    alert(message);
   } catch (err) {
-    return res.status(400).json({ message: '상품 추가에 실패하였습니다.' })
+    return res.status(400).json({ message: '상품 추가에 실패하였습니다.' });
   }
 }
