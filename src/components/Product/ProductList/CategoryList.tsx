@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SegmentedControl } from '@mantine/core';
 import { categories } from '@prisma/client';
 
+type CategoryListProps = {
+  categoryList: categories[];
+  selectedCategory: string;
+  onSelectCategory: Function;
+};
+
 const CategoryList = ({
   categoryList,
-}: {
-  categoryList: categories[];
-  onSelectCategory: Function;
-}) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('-1');
-
+  selectedCategory,
+  onSelectCategory,
+}: CategoryListProps) => {
   return (
     <div className="mb-4">
       {categoryList ? (
         <SegmentedControl
           color="dark"
           value={selectedCategory}
-          onChange={setSelectedCategory}
+          onChange={(newSelectedCategory) =>
+            onSelectCategory(newSelectedCategory)
+          }
           data={[
             { label: 'ALL', value: '-1' },
             ...categoryList.map((category) => ({
