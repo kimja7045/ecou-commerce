@@ -19,7 +19,9 @@ const CategoryList = ({
         <SegmentedControl
           color="dark"
           value={selectedCategory}
-          onChange={onSelectCategory}
+          onChange={(newSelectedCategory) =>
+            onSelectCategory(newSelectedCategory)
+          }
           data={[
             { label: 'ALL', value: '-1' },
             ...categoryList.map((category) => ({
