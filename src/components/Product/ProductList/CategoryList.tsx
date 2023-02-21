@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { SegmentedControl } from '@mantine/core';
 import { categories } from '@prisma/client';
 
