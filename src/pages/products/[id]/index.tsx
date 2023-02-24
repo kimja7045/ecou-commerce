@@ -1,4 +1,4 @@
-import CustomEditor from '@/components/Product/Editor';
+import CustomEditor from '@/components/Product/ProductDetail/Editor';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
