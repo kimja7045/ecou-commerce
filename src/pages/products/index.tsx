@@ -4,13 +4,13 @@ import { IProduct } from '@/types/product';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 import { TAKE_PRODUCT_COUNT } from '@/constants/products';
 import { api } from '../../api/api';
-import { Pagination } from '@mantine/core';
 import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
+import PaginationList from '@/components/Common/PaginationList';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
-  const [total, setTotal] = useState(1);
+  const [totalPage, setTotal] = useState(1);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categoryList, setCategoryList] = useState<categories[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('-1');
@@ -66,14 +66,11 @@ export default function ProductListPage() {
         onSelectCategory={onSelectCategory}
       />
       <ProductList products={products} />
-      <div className="w-full flex mt-16">
-        <Pagination
-          className="m-auto"
-          page={activePage}
-          onChange={setActivePage}
-          total={total}
-        />
-      </div>
+      <PaginationList
+        activePage={activePage}
+        setActivePage={setActivePage}
+        totalPage={totalPage}
+      />
     </div>
   );
 }

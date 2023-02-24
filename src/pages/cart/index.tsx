@@ -1,5 +1,5 @@
-function CartPage() {
-  return <div>CartPage</div>
+function CartListPage() {
+  return <div>CartListPage</div>;
 }
 
-export default CartPage
+export default CartListPage;
