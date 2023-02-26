@@ -46,10 +46,11 @@ export default function ProductListPage() {
         skip,
         take: TAKE_PRODUCT_COUNT,
         category: selectedCategory,
+        orderBy: selectedFilter || '',
       });
       setProducts(newProducts);
     },
-    [selectedCategory],
+    [selectedCategory, selectedFilter],
   );
 
   useEffect(() => {
