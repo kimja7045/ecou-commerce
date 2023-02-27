@@ -8,6 +8,7 @@ import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Common/PaginationList';
 import ListSelect from '@/components/Common/ListSelect';
+import SearchInput from '@/components/Common/SearchInput';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
@@ -65,6 +66,7 @@ export default function ProductListPage() {
 
   return (
     <div className="p-36">
+      <SearchInput />
       <ListSelect
         selectedValue={selectedFilter}
         setSelectedValue={setSelectedFilter}

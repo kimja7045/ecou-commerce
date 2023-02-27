@@ -1087,6 +1087,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tabler/icons@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-2.6.0.tgz#015275a0e13988ff8ad9c4a81cac0c754b8c0bd4"
+  integrity sha512-rflJyQSsu2iV6QgrA7ZdGaikSTdIVpXlem0jBIcx18OKg0ZJmLojmrhNo7DpOW7bCT4Hr2r6jcpq8uSYrinqZw==
+
 "@testing-library/dom@^8.5.0":
   version "8.19.1"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.19.1.tgz#0e2dafd281dedb930bb235eac1045470b4129d0e"
