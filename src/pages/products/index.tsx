@@ -6,7 +6,7 @@ import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
 import { api } from '../../api/api';
 import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
-import PaginationList from '@/components/Common/PaginationList';
+import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 
