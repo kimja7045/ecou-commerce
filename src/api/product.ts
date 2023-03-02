@@ -6,11 +6,13 @@ export async function getProducts({
   take,
   category,
   orderBy,
+  contains,
 }: {
   skip: number;
   take: number;
   category: string;
   orderBy: string;
+  contains: string;
 }) {
   const response = await api.get<IProduct[]>(`products/get-products`, {
     params: {
@@ -18,6 +20,7 @@ export async function getProducts({
       take,
       category,
       orderBy,
+      contains,
     },
   });
   return response.data;

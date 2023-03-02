@@ -3,18 +3,22 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function getProductsCount(categoryId: number) {
+async function getProductsCount(categoryId: number, contains: string) {
+  const containsCondition =
+    contains && contains !== '' ? { name: { contains } } : undefined;
+
   const filter =
     categoryId && categoryId !== -1
       ? {
-          where: {
-            category_id: categoryId,
-          },
+          category_id: categoryId,
+          ...containsCondition,
         }
+      : containsCondition
+      ? containsCondition
       : undefined;
 
   try {
-    const response = await prisma.products.count(filter);
+    const response = await prisma.products.count({ where: filter });
     return response;
   } catch (error) {
     console.error(error);
@@ -26,8 +30,11 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const { category } = req.query;
-    const productsCount = await getProductsCount(Number(category));
+    const { category, contains } = req.query;
+    const productsCount = await getProductsCount(
+      Number(category),
+      String(contains),
+    );
     res.status(200).json(productsCount);
   } catch (err) {
     console.log(err);

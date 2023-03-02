@@ -19,6 +19,7 @@ export default function ProductListPage() {
   const [selectedFilter, setSelectedFilter] = useState<string | null>(
     FILTER_LIST[0].value,
   );
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
 
   const fetchCategoryList = useCallback(async () => {
     const categoryList = await api.get('products/get-categories');
@@ -29,18 +30,19 @@ export default function ProductListPage() {
 
   const fetchProductsCount = useCallback(async () => {
     const productsCount = await api.get(
-      `products/get-products-count?category=${selectedCategory}`,
+      `products/get-products-count?category=${selectedCategory}&contains=${searchKeyword}`,
     );
     if (Number.isInteger(productsCount?.data)) {
       setTotal(Math.ceil(productsCount?.data / TAKE_PRODUCT_COUNT));
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, searchKeyword]);
 
   useEffect(() => {
     fetchProductsCount();
     fetchCategoryList();
   }, [fetchProductsCount, fetchCategoryList]);
 
+  /* TODO: useQuery hooks 형태로 분리하기 */
   const fetchProductList = useCallback(
     async (skip: number) => {
       const newProducts = await getProducts({
@@ -48,10 +50,11 @@ export default function ProductListPage() {
         take: TAKE_PRODUCT_COUNT,
         category: selectedCategory,
         orderBy: selectedFilter || '',
+        contains: searchKeyword,
       });
       setProducts(newProducts);
     },
-    [selectedCategory, selectedFilter],
+    [selectedCategory, selectedFilter, searchKeyword],
   );
 
   useEffect(() => {
@@ -64,9 +67,17 @@ export default function ProductListPage() {
     setActivePage(1);
   }, []);
 
+  // TODO: useDebounce로 분리하고 변경하기
+  const onChangeKeyword = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchKeyword(e.target.value);
+    },
+    [],
+  );
+
   return (
     <div className="p-36">
-      <SearchInput />
+      <SearchInput value={searchKeyword} onChange={onChangeKeyword} />
       <ListSelect
         selectedValue={selectedFilter}
         setSelectedValue={setSelectedFilter}
