@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
-import { ProductList } from '@/components/Product/ProductList/ProductList';
+import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
 import { api } from '../../api/api';
 import { categories } from '@prisma/client';
@@ -9,6 +9,7 @@ import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
+import useDebounce from '@/hooks/common/useDebounce';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
@@ -21,6 +22,8 @@ export default function ProductListPage() {
   );
   const [searchKeyword, setSearchKeyword] = useState<string>('');
 
+  const debouncedKeyword = useDebounce<string>(searchKeyword);
+
   const fetchCategoryList = useCallback(async () => {
     const categoryList = await api.get('products/get-categories');
     if (Array.isArray(categoryList?.data)) {
@@ -30,19 +33,18 @@ export default function ProductListPage() {
 
   const fetchProductsCount = useCallback(async () => {
     const productsCount = await api.get(
-      `products/get-products-count?category=${selectedCategory}&contains=${searchKeyword}`,
+      `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
     );
     if (Number.isInteger(productsCount?.data)) {
       setTotal(Math.ceil(productsCount?.data / TAKE_PRODUCT_COUNT));
     }
-  }, [selectedCategory, searchKeyword]);
+  }, [selectedCategory, debouncedKeyword]);
 
   useEffect(() => {
     fetchProductsCount();
     fetchCategoryList();
   }, [fetchProductsCount, fetchCategoryList]);
 
-  /* TODO: useQuery hooks 형태로 분리하기 */
   const fetchProductList = useCallback(
     async (skip: number) => {
       const newProducts = await getProducts({
@@ -50,11 +52,11 @@ export default function ProductListPage() {
         take: TAKE_PRODUCT_COUNT,
         category: selectedCategory,
         orderBy: selectedFilter || '',
-        contains: searchKeyword,
+        contains: debouncedKeyword,
       });
       setProducts(newProducts);
     },
-    [selectedCategory, selectedFilter, searchKeyword],
+    [selectedCategory, selectedFilter, debouncedKeyword],
   );
 
   useEffect(() => {
@@ -67,7 +69,6 @@ export default function ProductListPage() {
     setActivePage(1);
   }, []);
 
-  // TODO: useDebounce로 분리하고 변경하기
   const onChangeKeyword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchKeyword(e.target.value);
@@ -87,7 +88,7 @@ export default function ProductListPage() {
         selectedCategory={selectedCategory}
         onSelectCategory={onSelectCategory}
       />
-      <ProductList products={products} />
+      <ProductListView products={products} />
       <PaginationList
         activePage={activePage}
         setActivePage={setActivePage}
