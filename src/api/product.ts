@@ -15,7 +15,8 @@ const ProductAPI = {
     orderBy: string;
     contains: string;
   }) => {
-    const response = await client.get<IProduct[]>(`products/get-products`, {
+    const response = await client.get<IProduct[]>(
+      `products/get-products`, {
       params: {
         skip,
         take,

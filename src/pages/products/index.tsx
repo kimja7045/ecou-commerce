@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect } from 'react';
-import { IProduct } from '@/types/product';
 import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
 import { client } from '@/api/client';
@@ -10,11 +9,13 @@ import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
 import ProductAPI from '@/api/product';
+import { useQuery } from '@tanstack/react-query';
+import { IProduct } from '@/types/product';
+import useGetProducts from '@/hooks/query/useGetProducts';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
   const [totalPage, setTotal] = useState(1);
-  const [products, setProducts] = useState<IProduct[]>([]);
   const [categoryList, setCategoryList] = useState<categories[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('-1');
   const [selectedFilter, setSelectedFilter] = useState<string | null>(
@@ -23,6 +24,11 @@ export default function ProductListPage() {
   const [searchKeyword, setSearchKeyword] = useState<string>('');
 
   const debouncedKeyword = useDebounce<string>(searchKeyword);
+
+  const { products } = useGetProducts({
+    activePage, selectedCategory, selectedFilter, debouncedKeyword
+  })
+// TODO: 다른 API도 다 react-query 적용하기(캐싱->호출 최소화)
 
   const fetchCategoryList = useCallback(async () => {
     const categoryList = await client.get('products/get-categories');
@@ -44,25 +50,6 @@ export default function ProductListPage() {
     fetchProductsCount();
     fetchCategoryList();
   }, [fetchProductsCount, fetchCategoryList]);
-
-  const fetchProductList = useCallback(
-    async (skip: number) => {
-      const newProducts = await ProductAPI.getProducts({
-        skip,
-        take: TAKE_PRODUCT_COUNT,
-        category: selectedCategory,
-        orderBy: selectedFilter || '',
-        contains: debouncedKeyword,
-      });
-      setProducts(newProducts);
-    },
-    [selectedCategory, selectedFilter, debouncedKeyword],
-  );
-
-  useEffect(() => {
-    const skip = TAKE_PRODUCT_COUNT * (activePage - 1);
-    fetchProductList(skip);
-  }, [activePage, fetchProductList]);
 
   const onSelectCategory = useCallback((selectedCategory: string) => {
     setSelectedCategory(selectedCategory);
