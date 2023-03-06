@@ -8,9 +8,6 @@ import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
-import ProductAPI from '@/api/product';
-import { useQuery } from '@tanstack/react-query';
-import { IProduct } from '@/types/product';
 import useGetProducts from '@/hooks/query/useGetProducts';
 
 export default function ProductListPage() {
