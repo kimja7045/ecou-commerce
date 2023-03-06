@@ -1,4 +1,4 @@
-import { ProductList } from '@/components/Product/ProductList/ProductList';
+import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { IProduct } from '@/types/product';
 import { render } from '@testing-library/react';
 
@@ -17,6 +17,6 @@ const products: IProduct[] = [
 describe('상품', () => {
   it('목록을 출력합니다.', () => {
     if (typeof window !== 'object') return;
-    render(<ProductList products={products} />);
+    render(<ProductListView products={products} />);
   });
 });

@@ -6,7 +6,7 @@ type ProductListProps = {
   products: IProduct[];
 };
 
-export const ProductList = ({ products }: ProductListProps) => {
+export const ProductListView = ({ products }: ProductListProps) => {
   return products ? (
     <div className="grid grid-cols-3 gap-5">
       {products.map((pd) => (

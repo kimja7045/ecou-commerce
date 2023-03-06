@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
-import { ProductList } from '@/components/Product/ProductList/ProductList';
+import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
 import { api } from '../../api/api';
 import { categories } from '@prisma/client';
@@ -45,7 +45,6 @@ export default function ProductListPage() {
     fetchCategoryList();
   }, [fetchProductsCount, fetchCategoryList]);
 
-  /* TODO: useQuery hooks 형태로 분리하기 */
   const fetchProductList = useCallback(
     async (skip: number) => {
       const newProducts = await getProducts({
@@ -89,7 +88,7 @@ export default function ProductListPage() {
         selectedCategory={selectedCategory}
         onSelectCategory={onSelectCategory}
       />
-      <ProductList products={products} />
+      <ProductListView products={products} />
       <PaginationList
         activePage={activePage}
         setActivePage={setActivePage}
