@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { EditorState } from 'react-draft-wysiwyg';
 // import { convertFromRaw, convertToRaw } from 'draft-js'
 import { convertToRaw } from 'draft-js';
-import { api } from '@/api/api';
+import { client } from '@api/client';
 import { getProduct } from '@/api/product';
 
 const images = [
@@ -54,7 +54,7 @@ export default function ProductEdit() {
 
   const handleSave = async () => {
     if (editorState) {
-      await api.post(`products/update-product`, {
+      await client.post(`products/update-product`, {
         id: Number(productId),
         contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       });

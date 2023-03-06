@@ -1,4 +1,4 @@
-import { api } from './api';
+import { client } from './client';
 import { IProduct } from '@/types/product';
 
 export async function getProducts({
@@ -14,7 +14,7 @@ export async function getProducts({
   orderBy: string;
   contains: string;
 }) {
-  const response = await api.get<IProduct[]>(`products/get-products`, {
+  const response = await client.get<IProduct[]>(`products/get-products`, {
     params: {
       skip,
       take,
@@ -27,6 +27,6 @@ export async function getProducts({
 }
 
 export async function getProduct(id: number) {
-  const response = await api.get<IProduct>(`products/get-product?id=${id}`);
+  const response = await client.get<IProduct>(`products/get-product?id=${id}`);
   return response.data;
 }

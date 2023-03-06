@@ -3,7 +3,7 @@ import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
 import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
-import { api } from '../../api/api';
+import { client } from '@api/client';
 import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Product/ProductList/PaginationList';
@@ -25,14 +25,14 @@ export default function ProductListPage() {
   const debouncedKeyword = useDebounce<string>(searchKeyword);
 
   const fetchCategoryList = useCallback(async () => {
-    const categoryList = await api.get('products/get-categories');
+    const categoryList = await client.get('products/get-categories');
     if (Array.isArray(categoryList?.data)) {
       setCategoryList(categoryList?.data);
     }
   }, []);
 
   const fetchProductsCount = useCallback(async () => {
-    const productsCount = await api.get(
+    const productsCount = await client.get(
       `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
     );
     if (Number.isInteger(productsCount?.data)) {

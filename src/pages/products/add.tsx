@@ -9,7 +9,7 @@ function ProductAddPage() {
   //     alert('name을 넣어주세요.')
   //     return
   //   }
-  //   await api.post(`products/add-product`, { name: inputRef?.current?.value })
+  //   await client.post(`products/add-product`, { name: inputRef?.current?.value })
   // }
 
   return (
