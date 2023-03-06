@@ -1,20 +1,18 @@
 import { useState, useCallback, useEffect } from 'react';
-import { getProducts } from '@/api/product';
-import { IProduct } from '@/types/product';
 import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
-import { api } from '../../api/api';
+import { client } from '@/api/client';
 import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
+import useGetProducts from '@/hooks/query/useGetProducts';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
   const [totalPage, setTotal] = useState(1);
-  const [products, setProducts] = useState<IProduct[]>([]);
   const [categoryList, setCategoryList] = useState<categories[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('-1');
   const [selectedFilter, setSelectedFilter] = useState<string | null>(
@@ -24,15 +22,20 @@ export default function ProductListPage() {
 
   const debouncedKeyword = useDebounce<string>(searchKeyword);
 
+  const { products } = useGetProducts({
+    activePage, selectedCategory, selectedFilter, debouncedKeyword
+  })
+// TODO: 다른 API도 다 react-query 적용하기(캐싱->호출 최소화)
+
   const fetchCategoryList = useCallback(async () => {
-    const categoryList = await api.get('products/get-categories');
+    const categoryList = await client.get('products/get-categories');
     if (Array.isArray(categoryList?.data)) {
       setCategoryList(categoryList?.data);
     }
   }, []);
 
   const fetchProductsCount = useCallback(async () => {
-    const productsCount = await api.get(
+    const productsCount = await client.get(
       `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
     );
     if (Number.isInteger(productsCount?.data)) {
@@ -44,25 +47,6 @@ export default function ProductListPage() {
     fetchProductsCount();
     fetchCategoryList();
   }, [fetchProductsCount, fetchCategoryList]);
-
-  const fetchProductList = useCallback(
-    async (skip: number) => {
-      const newProducts = await getProducts({
-        skip,
-        take: TAKE_PRODUCT_COUNT,
-        category: selectedCategory,
-        orderBy: selectedFilter || '',
-        contains: debouncedKeyword,
-      });
-      setProducts(newProducts);
-    },
-    [selectedCategory, selectedFilter, debouncedKeyword],
-  );
-
-  useEffect(() => {
-    const skip = TAKE_PRODUCT_COUNT * (activePage - 1);
-    fetchProductList(skip);
-  }, [activePage, fetchProductList]);
 
   const onSelectCategory = useCallback((selectedCategory: string) => {
     setSelectedCategory(selectedCategory);

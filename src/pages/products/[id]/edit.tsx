@@ -7,8 +7,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { EditorState } from 'react-draft-wysiwyg';
 // import { convertFromRaw, convertToRaw } from 'draft-js'
 import { convertToRaw } from 'draft-js';
-import { api } from '@/api/api';
-import { getProduct } from '@/api/product';
+import { client } from '@/api/client';
+import ProductAPI from '@/api/product';
 
 const images = [
   {
@@ -35,7 +35,7 @@ export default function ProductEdit() {
 
   const fetchProduct = useCallback(async () => {
     if (productId) {
-      const product = await getProduct(Number(productId));
+      const product = await ProductAPI.getProduct(Number(productId));
       if (product && product.contents) {
         // setEditorState(
         //   EditorState.createWithContent(
@@ -54,7 +54,7 @@ export default function ProductEdit() {
 
   const handleSave = async () => {
     if (editorState) {
-      await api.post(`products/update-product`, {
+      await client.post(`products/update-product`, {
         id: Number(productId),
         contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       });

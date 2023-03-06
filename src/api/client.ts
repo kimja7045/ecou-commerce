@@ -5,7 +5,7 @@ const baseURL = isDev
   ? 'http://localhost:3000/api/'
   : `${process?.env?.NEXT_PUBLIC_BASE_URL}/api/`;
 
-export const api = axios.create({
+export const client = axios.create({
   baseURL,
   timeout: 10000,
   withCredentials: true,
