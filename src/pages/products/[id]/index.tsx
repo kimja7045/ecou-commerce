@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Carousel from 'nuka-carousel';
 import { useCallback, useEffect, useState } from 'react';
 import { EditorState } from 'react-draft-wysiwyg';
-import { getProduct } from '@/api/product';
+import ProductAPI from '@/api/product';
 
 const images = [
   {
@@ -32,7 +32,7 @@ export default function ProductDetailPage() {
 
   const fetchProduct = useCallback(async () => {
     if (productId) {
-      const product = await getProduct(Number(productId));
+      const product = await ProductAPI.getProduct(Number(productId));
       if (product && product.contents) {
         // setEditorState(
         //   EditorState.createWithContent(

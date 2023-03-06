@@ -1,15 +1,15 @@
 import { useState, useCallback, useEffect } from 'react';
-import { getProducts } from '@/api/product';
 import { IProduct } from '@/types/product';
 import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
-import { client } from '@api/client';
+import { client } from '@/api/client';
 import { categories } from '@prisma/client';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
+import ProductAPI from '@/api/product';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
@@ -47,7 +47,7 @@ export default function ProductListPage() {
 
   const fetchProductList = useCallback(
     async (skip: number) => {
-      const newProducts = await getProducts({
+      const newProducts = await ProductAPI.getProducts({
         skip,
         take: TAKE_PRODUCT_COUNT,
         category: selectedCategory,

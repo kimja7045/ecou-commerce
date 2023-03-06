@@ -20,7 +20,7 @@
 
     "paths": {
       "@/*": ["./*"],
-      "@api/*": ["api/*"],
+      "@api/*": ["client/*"],
       "@atoms/*": ["atoms/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
