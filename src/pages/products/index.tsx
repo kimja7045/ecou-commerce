@@ -1,7 +1,6 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { ProductListView } from '@/components/Product/ProductList/ProductListView';
-import { TAKE_PRODUCT_COUNT, FILTER_LIST } from '@/constants/products';
-import { client } from '@/api/client';
+import { FILTER_LIST } from '@/constants/products';
 import CategoryList from '@/components/Product/ProductList/CategoryList';
 import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
@@ -9,10 +8,10 @@ import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
 import useGetProducts from '@/hooks/product/query/useGetProducts';
 import useGetCategories from '@hooks/product/query/useGetCategories';
+import useGetTotalPage from '@/hooks/product/query/useGetTotalPage';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState(1);
-  const [totalPage, setTotal] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('-1');
   const [selectedFilter, setSelectedFilter] = useState<string | null>(
     FILTER_LIST[0].value,
@@ -28,19 +27,10 @@ export default function ProductListPage() {
     debouncedKeyword,
   });
   const { categoryList } = useGetCategories();
-
-  const fetchProductsCount = useCallback(async () => {
-    const productsCount = await client.get(
-      `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
-    );
-    if (Number.isInteger(productsCount?.data)) {
-      setTotal(Math.ceil(productsCount?.data / TAKE_PRODUCT_COUNT));
-    }
-  }, [selectedCategory, debouncedKeyword]);
-
-  useEffect(() => {
-    fetchProductsCount();
-  }, [fetchProductsCount]);
+  const { PaginationTotalPage } = useGetTotalPage({
+    selectedCategory,
+    debouncedKeyword,
+  });
 
   const onSelectCategory = useCallback((selectedCategory: string) => {
     setSelectedCategory(selectedCategory);
@@ -70,7 +60,7 @@ export default function ProductListPage() {
       <PaginationList
         activePage={activePage}
         setActivePage={setActivePage}
-        totalPage={totalPage}
+        totalPage={PaginationTotalPage}
       />
     </div>
   );
