@@ -47,7 +47,7 @@ export default function ProductListPage() {
     setActivePage(1);
   }, []);
 
-  const onChangeKeyword = useCallback(
+  const onChangeSearchKeyword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchKeyword(e.target.value);
     },
@@ -56,7 +56,7 @@ export default function ProductListPage() {
 
   return (
     <div className="p-36">
-      <SearchInput value={searchKeyword} onChange={onChangeKeyword} />
+      <SearchInput value={searchKeyword} onChange={onChangeSearchKeyword} />
       <ListSelect
         selectedValue={selectedFilter}
         setSelectedValue={setSelectedFilter}
