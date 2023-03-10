@@ -27,7 +27,7 @@ export default function ProductListPage() {
     debouncedKeyword,
   });
   const { categoryList } = useGetCategories();
-  const { PaginationTotalPage } = useGetTotalPage({
+  const { totalPage } = useGetTotalPage({
     selectedCategory,
     debouncedKeyword,
   });
@@ -57,11 +57,11 @@ export default function ProductListPage() {
         onSelectCategory={onSelectCategory}
       />
       <ProductListView products={products} />
-      <PaginationList
+      {totalPage && <PaginationList
         activePage={activePage}
         setActivePage={setActivePage}
-        totalPage={PaginationTotalPage}
-      />
+        totalPage={totalPage}
+      />}
     </div>
   );
 }

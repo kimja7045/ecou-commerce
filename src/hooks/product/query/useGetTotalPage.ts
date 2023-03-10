@@ -16,7 +16,7 @@ const useGetTotalPage = ({
   )
 
   return {
-    PaginationTotalPage: Math.ceil(totalPage / TAKE_PRODUCT_COUNT)
+    totalPage: Math.ceil(totalPage / TAKE_PRODUCT_COUNT)
   };
 };
 
