@@ -1,11 +1,11 @@
-import LikeList from "@/components/Like/LikeList/LikeList";
+import LikeList from '@/components/Like/LikeList/LikeList';
 
-function LikeListPage() {
+const LikeListPage = () => {
   return (
-  <div>
-        <LikeList/>
-  </div>
-  )
-}
+    <div>
+      <LikeList />
+    </div>
+  );
+};
 
 export default LikeListPage;
