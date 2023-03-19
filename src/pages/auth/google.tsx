@@ -1,3 +1,4 @@
+import AuthAPI from '@/api/auth';
 import { GoogleLogin } from '@react-oauth/google';
 
 const Google = () => {
@@ -5,7 +6,9 @@ const Google = () => {
     <div className="flex">
       <GoogleLogin
         onSuccess={(credentialResponse) => {
-          console.log(credentialResponse);
+          if (credentialResponse?.credential) {
+            AuthAPI.getToken(credentialResponse.credential);
+          }
         }}
         onError={() => {
           console.log('Login Failed');
