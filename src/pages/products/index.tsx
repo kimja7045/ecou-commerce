@@ -57,11 +57,13 @@ export default function ProductListPage() {
         onSelectCategory={onSelectCategory}
       />
       <ProductListView products={products} />
-      {totalPage && <PaginationList
-        activePage={activePage}
-        setActivePage={setActivePage}
-        totalPage={totalPage}
-      />}
+      {totalPage && (
+        <PaginationList
+          activePage={activePage}
+          setActivePage={setActivePage}
+          totalPage={totalPage}
+        />
+      )}
     </div>
   );
 }
