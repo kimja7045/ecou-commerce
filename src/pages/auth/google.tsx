@@ -7,7 +7,7 @@ const Google = () => {
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           if (credentialResponse?.credential) {
-            AuthAPI.getToken(credentialResponse.credential);
+            AuthAPI.signUp(credentialResponse.credential);
           }
         }}
         onError={() => {
