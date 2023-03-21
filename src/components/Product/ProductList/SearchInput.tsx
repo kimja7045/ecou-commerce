@@ -1,5 +1,6 @@
 import { Input } from '@mantine/core';
 import { ChangeEventHandler } from 'react';
+import { BiSearchAlt } from 'react-icons/bi';
 
 type SearchInputProps = {
   value: string;
@@ -9,8 +10,12 @@ type SearchInputProps = {
 const SearchInput = ({ value, onChange }: SearchInputProps) => {
   return (
     <div className="mb-4">
-      <Input placeholder="Eco Pants" value={value} onChange={onChange} />
-      {/* <Input icon={<IconSearch />} placeholder="Eco Pants" /> */}
+      <Input
+        icon={<BiSearchAlt size={18} style={{ marginRight: -10 }} />}
+        placeholder="Eco Pants"
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };
