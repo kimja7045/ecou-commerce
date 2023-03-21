@@ -2,16 +2,22 @@ import React from 'react';
 import Image from 'next/image';
 import { IProduct } from '@/types/product';
 import { CATEGORY_MAP } from '@/constants/products';
+import { useRouter } from 'next/router';
 
-const ProductItem = ({ name, image_url, price, category_id }: IProduct) => {
+const ProductItem = ({ id, name, image_url, price, category_id }: IProduct) => {
+  const router = useRouter();
+
   return (
-    <div className="max-w-xs">
+    <div
+      className="cursor-pointer"
+      onClick={() => router.push(`/products/${id}`)}
+    >
       <Image
         className="rounded"
         src={image_url ?? ''}
         alt={name}
-        width={320}
-        height={390}
+        width={480}
+        height={400}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8p6NTDwAEnQGnwx5bWgAAAABJRU5ErkJggg=="
       />
