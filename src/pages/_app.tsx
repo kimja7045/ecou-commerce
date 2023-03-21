@@ -2,9 +2,9 @@ import '../../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-
-const GOOGLE_CLIENT_ID: string = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '';
+import Header from '@/components/Layout/Header';
+import { SessionProvider } from 'next-auth/react';
+import styled from '@emotion/styled';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({
@@ -16,13 +16,20 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+    <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           {/* TODO: globalStyle 적용하기 */}
-          <Component {...pageProps} />
+          <Container>
+            <Header />
+            <Component {...pageProps} />
+          </Container>
         </RecoilRoot>
       </QueryClientProvider>
-    </GoogleOAuthProvider>
+    </SessionProvider>
   );
 }
+
+const Container = styled.div`
+  padding: 0 36px;
+`;

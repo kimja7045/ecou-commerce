@@ -45,7 +45,7 @@ export default function ProductListPage() {
   );
 
   return (
-    <div className="p-36">
+    <div>
       <SearchInput value={searchKeyword} onChange={onChangeSearchKeyword} />
       <ListSelect
         selectedValue={selectedFilter}

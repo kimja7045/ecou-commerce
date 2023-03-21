@@ -19,7 +19,7 @@ const ProductItem = ({ id, name, image_url, price, category_id }: IProduct) => {
         width={480}
         height={400}
         placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8p6NTDwAEnQGnwx5bWgAAAABJRU5ErkJggg=="
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUVGoBwABxQDpDqiIWwAAAABJRU5ErkJggg=="
       />
       <div className="flex mt-2">
         <span>{name}</span>
