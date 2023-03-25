@@ -1,32 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+import ProductListPage from './products';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Ecou</title>
-        <meta name="description" content="ecou commerce" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const Home = () => {
+  return <ProductListPage />;
+};
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://ecou-commerce.vercel.app">EcoU</a>
-        </h1>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by ecou
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
-}
+export default Home;
