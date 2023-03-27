@@ -1,7 +1,7 @@
-type ButtonProps = {
+interface ButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
   children: any;
-};
+}
 
 const Button = ({ onClick, children }: ButtonProps) => {
   return <button onClick={onClick}>{children}</button>;
