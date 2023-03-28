@@ -1,5 +1,5 @@
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   children: any;
 }
 
