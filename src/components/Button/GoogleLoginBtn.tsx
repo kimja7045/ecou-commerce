@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import Button from '../Common/Button';
+import BaseButton from '@components/Button/BaseButton';
 export default function GoogleLoginBtn() {
   const { data: session } = useSession();
   if (session) {
@@ -13,7 +13,7 @@ export default function GoogleLoginBtn() {
   return (
     <div>
       <p>Not signed in</p>
-      <Button onClick={() => signIn()}>Sign in</Button>
+      <BaseButton onClick={() => signIn()}>Sign in</BaseButton>
     </div>
   );
 }
