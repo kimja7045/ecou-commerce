@@ -6,7 +6,10 @@ import Header from '@/components/AppLayout/Header';
 import { SessionProvider } from 'next-auth/react';
 import styled from '@emotion/styled';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -16,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           {/* TODO: globalStyle 적용하기 */}

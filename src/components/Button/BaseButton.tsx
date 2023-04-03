@@ -3,8 +3,8 @@ interface ButtonProps {
   children: any;
 }
 
-const Button = ({ onClick, children }: ButtonProps) => {
+const BaseButton = ({ onClick, children }: ButtonProps) => {
   return <button onClick={onClick}>{children}</button>;
 };
 
-export default Button;
+export default BaseButton;

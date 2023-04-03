@@ -1,15 +1,15 @@
 import { AxiosError } from 'axios';
 
-type AuthErrorData = {
+type ErrorData = {
   messages: {
     id: string;
     message: string;
   };
 };
 
-export type AuthError = AxiosError<{
+export type Error = AxiosError<{
   statusCode: number;
   error: string;
-  message: AuthErrorData;
-  data: AuthErrorData;
+  message: ErrorData;
+  data: ErrorData;
 }>;
