@@ -1,13 +1,14 @@
 import CustomEditor from '@/components/Product/ProductDetail/Editor';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import Carousel from 'nuka-carousel';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EditorState } from 'react-draft-wysiwyg';
 import ProductAPI from '@/api/product';
+import { GetServerSidePropsContext } from 'next';
+import { products } from '@prisma/client';
 
-const images = [
+const CAROUSEL_IMAGES = [
   {
     original: 'https://picsum.photos/id/1018/1000/600/',
     thumbnail: 'https://picsum.photos/id/1018/250/150/',
@@ -22,32 +23,35 @@ const images = [
   },
 ];
 
-export default function ProductDetailPage() {
-  const [index, setIndex] = useState(0);
-  const router = useRouter();
-  const { id: productId } = router.query;
-  const [editorState, setEditorState] = useState<EditorState | undefined>(
-    undefined,
-  );
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const productId = context.params?.id;
+  const product = await ProductAPI.getProduct(Number(productId));
+  return {
+    props: {
+      product: { ...product, images: [product.image_url, product.image_url] },
+    },
+  };
+}
 
-  const fetchProduct = useCallback(async () => {
-    if (productId) {
-      const product = await ProductAPI.getProduct(Number(productId));
-      if (product && product.contents) {
-        // setEditorState(
-        //   EditorState.createWithContent(
-        //     convertFromRaw(JSON.parse(product.contents))
-        //   )
-        // )
-      } else {
-        // setEditorState(EditorState.createEmpty())
-      }
-    }
-  }, [productId]);
+export default function ProductDetailPage(props: {
+  product: products & { images: string[] };
+}) {
+  const [index, setIndex] = useState(0);
+  const [editorState, setEditorState] = useState<EditorState | undefined>();
+
+  const product = props.product;
 
   useEffect(() => {
-    fetchProduct();
-  }, [fetchProduct]);
+    // if (props.product?.contents) {
+    //   setEditorState(
+    //     EditorState.createWithContent(
+    //       convertFromRaw(JSON.parse(props.product.contents)),
+    //     ),
+    //   );
+    // } else {
+    //   setEditorState(EditorState.createEmpty());
+    // }
+  }, []);
 
   return (
     <>
@@ -71,21 +75,15 @@ export default function ProductDetailPage() {
         slidesToShow={3}
         animation="zoom"
       >
-        {images.map((img) => (
-          <Image
-            key={img.original}
-            src={img.original}
-            alt="image"
-            width={1000}
-            height={600}
-          />
+        {product.images.map((url) => (
+          <Image key={url} src={url} alt="image" width={1000} height={600} />
         ))}
       </Carousel>
 
       <div className="flex">
-        {images.map((img, idx) => (
+        {product.images.map((url, idx) => (
           <div key={idx} onClick={() => setIndex(idx)}>
-            <Image src={img.original} alt="image" width={100} height={60} />
+            <Image src={url} alt="image" width={100} height={60} />
           </div>
         ))}
       </div>

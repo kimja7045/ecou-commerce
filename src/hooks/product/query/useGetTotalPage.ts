@@ -9,14 +9,19 @@ const useGetTotalPage = ({
   selectedCategory: string;
   debouncedKeyword: string;
 }) => {
-  const queryKey = `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`
+  const queryKey = `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`;
 
-  const {data: totalPage = 1} = useQuery<{data: number}, unknown, number>(
-    [queryKey], () => client.get(queryKey), {select: data=>data.data}
-  )
+  const { data: totalPage = 1 } = useQuery<{ data: number }, unknown, number>(
+    [queryKey],
+    () => client.get(queryKey),
+    {
+      select: (data) => data.data,
+      // suspense: true,
+    },
+  );
 
   return {
-    totalPage: Math.ceil(totalPage / TAKE_PRODUCT_COUNT)
+    totalPage: Math.ceil(totalPage / TAKE_PRODUCT_COUNT),
   };
 };
 

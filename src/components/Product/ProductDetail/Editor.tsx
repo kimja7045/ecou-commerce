@@ -8,6 +8,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((module) => module.Editor),
   {
+    suspense: true,
     ssr: false,
   },
 );
