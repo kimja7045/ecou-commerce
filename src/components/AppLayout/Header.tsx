@@ -14,23 +14,28 @@ const Header = () => {
   return (
     <div className="mt-12 mb-12">
       <div className="w-full flex h-50 items-center">
-        <AiOutlineHome onClick={() => router.push('/')} />
+        <AiOutlineHome
+          className="cursor-pointer"
+          size={26}
+          onClick={() => router.push('/')}
+        />
         <span className="m-auto" />
         <AiOutlineShoppingCart
-          className="mr-4"
+          className="mr-4 cursor-pointer"
+          size={26}
           onClick={() => router.push('/cart')}
         />
         {session ? (
           <Image
             src={session.user?.image!}
             alt="profile"
-            width={30}
-            height={30}
+            width={32}
+            height={32}
             style={{ borderRadius: '50%' }}
             onClick={() => router.push('/myPage')}
           />
         ) : (
-          <AiOutlineUser onClick={() => router.push('/auth/login')} />
+          <AiOutlineUser size={26} onClick={() => router.push('/auth/login')} />
         )}
       </div>
     </div>
