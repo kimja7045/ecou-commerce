@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Header from '@/components/AppLayout/Header';
 import { SessionProvider } from 'next-auth/react';
 import styled from '@emotion/styled';
+import { Suspense } from 'react';
 
 export default function App({
   Component,
@@ -14,6 +15,7 @@ export default function App({
     defaultOptions: {
       queries: {
         staleTime: Infinity,
+        suspense: true,
       },
     },
   });
@@ -25,7 +27,9 @@ export default function App({
           {/* TODO: globalStyle 적용하기 */}
           <Container>
             <Header />
-            <Component {...pageProps} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Component {...pageProps} />
+            </Suspense>
           </Container>
         </RecoilRoot>
       </QueryClientProvider>

@@ -18,14 +18,19 @@ const useGetProducts = ({
     TAKE_PRODUCT_COUNT * (activePage - 1)
   }&take=${TAKE_PRODUCT_COUNT}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`;
 
-  const { data: products = [] } = useQuery<IProduct[]>([queryKey], () =>
-    ProductAPI.getProducts({
-      skip: TAKE_PRODUCT_COUNT * (activePage - 1),
-      take: TAKE_PRODUCT_COUNT,
-      category: selectedCategory,
-      orderBy: selectedFilter || '',
-      contains: debouncedKeyword,
-    }),
+  const { data: products = [] } = useQuery<IProduct[]>(
+    [queryKey],
+    () =>
+      ProductAPI.getProducts({
+        skip: TAKE_PRODUCT_COUNT * (activePage - 1),
+        take: TAKE_PRODUCT_COUNT,
+        category: selectedCategory,
+        orderBy: selectedFilter || '',
+        contains: debouncedKeyword,
+      }),
+    // {
+    //   suspense: true,
+    // },
   );
 
   return {
