@@ -1,13 +1,13 @@
-import CustomEditor from '@/components/Product/ProductDetail/Editor';
+// import CustomEditor from '@/components/Product/ProductDetail/Editor';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Carousel from 'nuka-carousel';
 import { useCallback, useEffect, useState } from 'react';
-import { EditorState } from 'react-draft-wysiwyg';
+// import { EditorState } from 'eact-draft-wysiwyg';
 // import { convertFromRaw, convertToRaw } from 'draft-js'
-import { convertToRaw } from 'draft-js';
-import { client } from '@/api/client';
+// import { convertToRaw } from 'draft-js';
+// import { client } from '@/api/client';
 import ProductAPI from '@/api/product';
 
 const images = [
@@ -29,9 +29,7 @@ export default function ProductEdit() {
   const [index, setIndex] = useState(0);
   const router = useRouter();
   const { id: productId } = router.query;
-  const [editorState, setEditorState] = useState<EditorState | undefined>(
-    undefined,
-  );
+  // const [editorState, setEditorState] = useState<undefined>(undefined);
 
   const fetchProduct = useCallback(async () => {
     if (productId) {
@@ -52,15 +50,15 @@ export default function ProductEdit() {
     fetchProduct();
   }, [fetchProduct]);
 
-  const handleSave = async () => {
-    if (editorState) {
-      await client.post(`products/update-product`, {
-        id: Number(productId),
-        contents: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-      });
-      alert('수정이 완료되었습니다.');
-    }
-  };
+  // const handleSave = async () => {
+  //   if (editorState) {
+  //     await client.post(`products/update-product`, {
+  //       id: Number(productId),
+  //       // contents: JSON.stringify(convertToRaw(editorState?.getCurrentContent())),
+  //     });
+  //     alert('수정이 완료되었습니다.');
+  //   }
+  // };
 
   return (
     <>
@@ -93,20 +91,20 @@ export default function ProductEdit() {
           />
         ))}
       </Carousel>
-      <div>
+      <div className="flex mt-4">
         {images.map((img, idx) => (
-          <div key={idx} className="display:flex" onClick={() => setIndex(idx)}>
+          <div key={idx} onClick={() => setIndex(idx)}>
             <Image src={img.original} alt="image" width={100} height={60} />
           </div>
         ))}
       </div>
-      {editorState && (
+      {/* {editorState && (
         <CustomEditor
           editorState={editorState}
           onEditorStateChange={setEditorState}
           onSave={handleSave}
         />
-      )}
+      )} */}
     </>
   );
 }
