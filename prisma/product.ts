@@ -10,7 +10,7 @@ const productData: Prisma.productsCreateInput[] = Array.apply(
   name: `Dark Jean ${index + 1}`,
   contents: `This is a Dark Jean ${index + 1}`,
   category_id: 1,
-  image_url: 'https://picsum.photos/500/500',
+  image_url: 'https://picsum.photos/600/600',
   price: getRandom(100000, 20000),
 }));
 
