@@ -102,7 +102,7 @@ export default function ProductDetailPage(props: {
           <div className="text-lg text-zinc-400">
             {CATEGORY_MAP[product.category_id - 1]}
           </div>
-          <div className="text-4lg font-semibold">{product.name}</div>
+          <div className="font-semibold text-3xl">{product.name}</div>
           <div className="text-lg">
             {product.price.toLocaleString('ko-kr')}원
           </div>
