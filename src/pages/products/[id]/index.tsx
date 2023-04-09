@@ -54,12 +54,12 @@ export default function ProductDetailPage(props: {
       </Head>
 
       <Wrapper>
-        <div className="min-w-[350px]">
+        <div className="min-w-[300px]">
           {product?.images.length > 0 && (
             <Image
               src={product.images[index]}
-              width={350}
-              height={350}
+              width={300}
+              height={300}
               alt="product_thumbnail"
               style={{ background: 'blue' }}
             />
@@ -98,7 +98,7 @@ export default function ProductDetailPage(props: {
           </div>
         </div>
 
-        <ProductInfoWrapper className="space-y-2 min-w-[350px]">
+        <ProductInfoWrapper className="space-y-2 min-w-[300px]">
           <div className="text-lg text-zinc-400">
             {CATEGORY_MAP[product.category_id - 1]}
           </div>
@@ -127,7 +127,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   padding: 0 6rem;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 375px) {
     flex-direction: column;
     padding: 0;
   }
@@ -138,7 +138,7 @@ const ProductInfoWrapper = styled.div`
   flex-direction: column;
   margin-left: 3rem;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 375px) {
     margin: 1rem 0;
   }
 `;
