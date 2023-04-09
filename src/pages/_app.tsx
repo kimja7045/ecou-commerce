@@ -16,6 +16,7 @@ export default function App({
       queries: {
         staleTime: Infinity,
         suspense: true,
+        useErrorBoundary: true,
       },
     },
   });
