@@ -11,6 +11,7 @@ interface ProductDetailViewProps {
   isWished: boolean;
   imageIndex: number;
   onClickImage: (imageIdx: number) => void;
+  onToggleWished: () => void;
 }
 
 const ProductDetailView = ({
@@ -18,6 +19,7 @@ const ProductDetailView = ({
   isWished,
   imageIndex,
   onClickImage,
+  onToggleWished,
 }: ProductDetailViewProps) => {
   return (
     <Wrapper>
@@ -77,6 +79,7 @@ const ProductDetailView = ({
           style={{ backgroundColor: isWished ? 'red' : 'gray' }}
           radius="xl"
           size="md"
+          onClick={onToggleWished}
         >
           찜하기
         </Button>
