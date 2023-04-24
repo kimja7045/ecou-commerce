@@ -11,6 +11,7 @@ interface ProductDetailViewProps {
   isWished: boolean;
   imageIndex: number;
   onClickImage: (imageIdx: number) => void;
+  onToggleWished: () => void;
 }
 
 const ProductDetailView = ({
@@ -18,6 +19,7 @@ const ProductDetailView = ({
   isWished,
   imageIndex,
   onClickImage,
+  onToggleWished,
 }: ProductDetailViewProps) => {
   return (
     <Wrapper>
@@ -33,7 +35,7 @@ const ProductDetailView = ({
         )}
         {/* {product?.images?.length > 0 && (
             <Carousel
-              autoplay
+              // autoplay
               speed={10}
               slideIndex={index}
               wrapAround
@@ -73,10 +75,14 @@ const ProductDetailView = ({
         <div className="text-lg">{product.price.toLocaleString('ko-kr')}원</div>
 
         <Button
+          onClick={onToggleWished}
           leftIcon={isWished ? <AiFillHeart /> : <AiOutlineHeart />}
           style={{ backgroundColor: isWished ? 'red' : 'gray' }}
           radius="xl"
           size="md"
+          // styles={{
+          //   root: { paddingRight: 14, height: 48 },
+          // }}
         >
           찜하기
         </Button>
