@@ -19,6 +19,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
+export type CartType = 'cart' | 'order';
+
 export default function ProductDetailPage(props: {
   product: products & { images: string[] };
 }) {
@@ -44,6 +46,20 @@ export default function ProductDetailPage(props: {
     toggleProductWish();
   }, [toggleProductWish, router, session]);
 
+  const checkCartValidate = useCallback(
+    (type: CartType) => {
+      if (!session) {
+        alert('로그인이 필요합니다.');
+        router.push('/auth/login');
+      }
+      console.log(type);
+
+      // TODO: 장바구니에 등록하는 기능 추가
+      router.push('/cart');
+    },
+    [router, session],
+  );
+
   return (
     <>
       <Head>
@@ -65,6 +81,7 @@ export default function ProductDetailPage(props: {
         imageIndex={imageIndex}
         onClickImage={(imageIdx) => onClickImage(imageIdx)}
         onToggleWished={toggleWished}
+        validate={(type: CartType) => checkCartValidate(type)}
       />
     </>
   );

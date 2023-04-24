@@ -2,9 +2,16 @@ import styled from '@emotion/styled';
 import { Button } from '@mantine/core';
 import { products } from '@prisma/client';
 import { format } from 'date-fns';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai';
 import { CATEGORY_MAP } from '@constants/products';
 import Image from 'next/image';
+import { CartType } from '@pages/products/[id]';
+import { CountControl } from '../../Common/CountControl';
+import { useState } from 'react';
 
 interface ProductDetailViewProps {
   product: products & { images: string[] };
@@ -12,6 +19,7 @@ interface ProductDetailViewProps {
   imageIndex: number;
   onClickImage: (imageIdx: number) => void;
   onToggleWished: () => void;
+  validate: (value: CartType) => void;
 }
 
 const ProductDetailView = ({
@@ -20,7 +28,10 @@ const ProductDetailView = ({
   imageIndex,
   onClickImage,
   onToggleWished,
+  validate,
 }: ProductDetailViewProps) => {
+  const [productQuantity, setProductQuantity] = useState<number | undefined>(1);
+
   return (
     <Wrapper>
       <div className="min-w-[300px]">
@@ -74,6 +85,19 @@ const ProductDetailView = ({
         <div className="font-semibold text-3xl">{product.name}</div>
         <div className="text-lg">{product.price.toLocaleString('ko-kr')}원</div>
 
+        <div>
+          <span className="text-lg">수량</span>
+          <CountControl value={productQuantity} setValue={setProductQuantity} />
+        </div>
+        <Button
+          onClick={() => validate('cart')}
+          leftIcon={<AiOutlineShoppingCart />}
+          style={{ backgroundColor: 'black' }}
+          radius="xl"
+          size="md"
+        >
+          장바구니
+        </Button>
         <Button
           onClick={onToggleWished}
           leftIcon={isWished ? <AiFillHeart /> : <AiOutlineHeart />}
