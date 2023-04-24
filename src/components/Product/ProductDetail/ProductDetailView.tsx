@@ -35,7 +35,7 @@ const ProductDetailView = ({
         )}
         {/* {product?.images?.length > 0 && (
             <Carousel
-              autoplay
+              // autoplay
               speed={10}
               slideIndex={index}
               wrapAround

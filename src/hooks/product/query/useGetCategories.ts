@@ -8,7 +8,7 @@ const useGetCategories = () => {
     { data: categories[] },
     unknown,
     categories[]
-  >([queryKey], () => client.get('products/get-categories'), {
+  >([queryKey], () => client.get(queryKey), {
     select: (data) => data.data,
   });
 

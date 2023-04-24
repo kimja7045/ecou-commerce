@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/api/client';
+import { WISHLIST_QUERY_KEY } from '../../../constants/Product/queryKey';
 
 const useGetWishList = () => {
-  const queryKey = `products/get-wishList`;
   const { data: wishList = [] } = useQuery<
     { data: string[] },
     unknown,
     string[]
-  >([queryKey], () => client.get('products/get-categories'), {
+  >([WISHLIST_QUERY_KEY], () => client.get(WISHLIST_QUERY_KEY), {
     select: (data) => data.data,
   });
 

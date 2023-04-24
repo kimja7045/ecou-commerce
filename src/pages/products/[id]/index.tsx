@@ -1,12 +1,13 @@
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import ProductAPI from '@/api/product';
-import { GetServerSidePropsContext } from 'next';
 import { products } from '@prisma/client';
 import useGetWishList from '@hooks/product/query/useGetWishList';
 import ProductDetailView from '@components/Product/ProductDetail/ProductDetailView';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import useToggleWishList from '@/hooks/product/mutate/useToggleWishList';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const productId = context.params?.id;
@@ -26,8 +27,10 @@ export default function ProductDetailPage(props: {
   const [imageIndex, setImageIndex] = useState(0);
 
   const product = props.product;
+
   const { wishList } = useGetWishList();
   const isWished = wishList.includes(String(product?.id));
+  const { toggleProductWish } = useToggleWishList(String(product.id));
 
   const onClickImage = useCallback((imageIdx: number) => {
     setImageIndex(imageIdx);
@@ -38,7 +41,8 @@ export default function ProductDetailPage(props: {
       alert('로그인이 필요합니다.');
       router.push('/auth/login');
     }
-  }, [router, session]);
+    toggleProductWish();
+  }, [toggleProductWish, router, session]);
 
   return (
     <>
