@@ -75,11 +75,14 @@ const ProductDetailView = ({
         <div className="text-lg">{product.price.toLocaleString('ko-kr')}원</div>
 
         <Button
+          onClick={onToggleWished}
           leftIcon={isWished ? <AiFillHeart /> : <AiOutlineHeart />}
           style={{ backgroundColor: isWished ? 'red' : 'gray' }}
           radius="xl"
           size="md"
-          onClick={onToggleWished}
+          // styles={{
+          //   root: { paddingRight: 14, height: 48 },
+          // }}
         >
           찜하기
         </Button>
