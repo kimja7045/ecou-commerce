@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
-import { IUser } from '../types/user';
+import { User } from '../types/user';
 
 interface AuthState {
-  user: IUser | null;
+  user: User | null;
 }
 
 export const authState = atom<AuthState>({
