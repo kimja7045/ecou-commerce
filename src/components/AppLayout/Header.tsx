@@ -6,10 +6,24 @@ import {
   AiOutlineUser,
 } from 'react-icons/ai';
 import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 
 const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
+
+  const moveNextPage = useCallback(
+    (path: string) => {
+      if (path !== '/' && !session) {
+        alert('로그인이 필요합니다.');
+        router.push('/auth/login');
+        return;
+      }
+
+      router.push(`${path}`);
+    },
+    [router, session],
+  );
 
   return (
     <div className="mt-12 mb-12">
@@ -17,13 +31,13 @@ const Header = () => {
         <AiOutlineHome
           className="cursor-pointer"
           size={26}
-          onClick={() => router.push('/')}
+          onClick={() => moveNextPage('/')}
         />
         <span className="m-auto" />
         <AiOutlineShoppingCart
           className="mr-4 cursor-pointer"
           size={26}
-          onClick={() => router.push('/cart')}
+          onClick={() => moveNextPage('/cart')}
         />
         {session ? (
           <Image
@@ -32,7 +46,7 @@ const Header = () => {
             width={32}
             height={32}
             style={{ borderRadius: '50%' }}
-            onClick={() => router.push('/myPage')}
+            onClick={() => moveNextPage('/myPage')}
           />
         ) : (
           <AiOutlineUser size={26} onClick={() => router.push('/auth/login')} />
