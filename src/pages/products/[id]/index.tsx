@@ -42,7 +42,9 @@ export default function ProductDetailPage(props: {
     if (!session) {
       alert('로그인이 필요합니다.');
       router.push('/auth/login');
+      return;
     }
+
     toggleProductWish();
   }, [toggleProductWish, router, session]);
 
@@ -51,7 +53,9 @@ export default function ProductDetailPage(props: {
       if (!session) {
         alert('로그인이 필요합니다.');
         router.push('/auth/login');
+        return;
       }
+
       console.log(type);
 
       // TODO: 장바구니에 등록하는 기능 추가
