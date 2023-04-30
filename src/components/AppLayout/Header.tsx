@@ -49,7 +49,11 @@ const Header = () => {
             onClick={() => moveNextPage('/myPage')}
           />
         ) : (
-          <AiOutlineUser size={26} onClick={() => router.push('/auth/login')} />
+          <AiOutlineUser
+            className="cursor-pointer"
+            size={26}
+            onClick={() => router.push('/auth/login')}
+          />
         )}
       </div>
     </div>
