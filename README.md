@@ -18,7 +18,7 @@
 
 ### Infrastructure
 
-- Github Actions, Vercel, AWS
+- Github Actions, Vercel
 
 ## Getting Started
 
