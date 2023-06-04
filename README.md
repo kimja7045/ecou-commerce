@@ -16,10 +16,6 @@
 
 - Prisma, PlanetScale
 
-  -> 이후에 아래 스택으로 변경예정입니다.
-
-- Django(drf), PostgreSQL, Swagger
-
 ### Infrastructure
 
 - Github Actions, Vercel, AWS
