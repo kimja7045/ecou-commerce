@@ -124,9 +124,8 @@ export default ProductDetailView;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0 6rem;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     flex-direction: column;
     padding: 0;
   }
@@ -137,7 +136,7 @@ const ProductInfoWrapper = styled.div`
   flex-direction: column;
   margin-left: 3rem;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     margin: 1rem 0;
   }
 `;
