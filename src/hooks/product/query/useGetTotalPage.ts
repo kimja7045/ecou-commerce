@@ -11,7 +11,7 @@ const useGetTotalPage = ({
 }) => {
   const queryKey = `products/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`;
 
-  const { data: totalPage = 1 } = useQuery<{ data: number }, unknown, number>(
+  const { data: totalPage = 0 } = useQuery<{ data: number }, unknown, number>(
     [queryKey],
     () => client.get(queryKey),
     {

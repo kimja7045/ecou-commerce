@@ -50,11 +50,11 @@ export default function ProductDetailPage(props: {
 
   const checkCartValidate = useCallback(
     (type: CartType) => {
-      if (!session) {
-        alert('로그인이 필요합니다.');
-        router.push('/auth/login');
-        return;
-      }
+      // if (!session) {
+      //   alert('로그인이 필요합니다.');
+      //   router.push('/auth/login');
+      //   return;
+      // }
 
       console.log(type);
 
