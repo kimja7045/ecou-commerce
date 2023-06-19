@@ -58,7 +58,7 @@ export default function ProductDetailPage(props: {
 
       console.log(type);
 
-      // TODO: 장바구니에 등록하는 기능 추가
+      // TODO: 장바구니에 등록하는 로직 추가
       router.push('/cart');
     },
     [router],
