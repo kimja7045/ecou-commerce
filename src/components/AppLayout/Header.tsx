@@ -26,7 +26,7 @@ const Header = () => {
   );
 
   return (
-    <div className="mt-12 mb-12">
+    <div className="my-12">
       <div className="w-full flex h-50 items-center">
         <AiOutlineHome
           className="cursor-pointer"

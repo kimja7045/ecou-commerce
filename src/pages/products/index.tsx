@@ -11,7 +11,7 @@ import useGetCategories from '@hooks/product/query/useGetCategories';
 import useGetTotalPage from '@/hooks/product/query/useGetTotalPage';
 
 export default function ProductListPage() {
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('-1');
   const [selectedFilter, setSelectedFilter] = useState<string | null>(
     FILTER_LIST[0].value,
@@ -57,7 +57,7 @@ export default function ProductListPage() {
         onSelectCategory={onSelectCategory}
       />
       <ProductListView products={products} />
-      {totalPage && (
+      {!!totalPage && (
         <PaginationList
           activePage={activePage}
           setActivePage={setActivePage}
