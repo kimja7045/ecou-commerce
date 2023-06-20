@@ -1,9 +1,12 @@
-import React from 'react'
+import { Cart } from '@/types/product';
 
-const CartList = () => {
-  return (
-    <div>CartList component</div>
-  )
+interface CartListProps {
+  items: Cart[];
 }
 
-export default CartList
+const CartList = ({ items }: CartListProps) => {
+  console.log(items);
+  return <div>CartList component</div>;
+};
+
+export default CartList;

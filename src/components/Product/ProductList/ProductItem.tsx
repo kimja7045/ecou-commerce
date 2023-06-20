@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import { IProduct } from '@/types/product';
+import { Product } from '@/types/product';
 import { CATEGORY_MAP } from '@/constants/products';
 import { useRouter } from 'next/router';
 
-const ProductItem = ({ id, name, image_url, price, category_id }: IProduct) => {
+const ProductItem = ({ id, name, image_url, price, category_id }: Product) => {
   const router = useRouter();
 
   return (

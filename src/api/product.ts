@@ -1,5 +1,5 @@
 import { client } from './client';
-import { IProduct } from '@/types/product';
+import { Product } from '@/types/product';
 
 const ProductAPI = {
   getProducts: async ({
@@ -15,8 +15,7 @@ const ProductAPI = {
     orderBy: string;
     contains: string;
   }) => {
-    const response = await client.get<IProduct[]>(
-      `products/get-products`, {
+    const response = await client.get<Product[]>(`products/get-products`, {
       params: {
         skip,
         take,
@@ -28,9 +27,7 @@ const ProductAPI = {
     return response.data;
   },
   getProduct: async (id: number) => {
-    const response = await client.get<IProduct>(
-      `products/get-product?id=${id}`,
-    );
+    const response = await client.get<Product>(`products/get-product?id=${id}`);
     return response.data;
   },
 };
