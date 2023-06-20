@@ -61,7 +61,7 @@ export default function ProductDetailPage(props: {
       // TODO: 장바구니에 등록하는 기능 추가
       router.push('/cart');
     },
-    [router, session],
+    [router],
   );
 
   return (
