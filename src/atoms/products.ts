@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
-import { IProduct } from '../types/product';
+import { Product } from '../types/product';
 
-export const productsState = atom<IProduct[]>({
+export const productsState = atom<Product[]>({
   key: 'productsState',
   default: [],
 });

@@ -1,9 +1,9 @@
 import React from 'react';
-import { IProduct } from '@/types/product';
+import { Product } from '@/types/product';
 import ProductItem from './ProductItem';
 
 type ProductListProps = {
-  products: IProduct[];
+  products: Product[];
 };
 
 export const ProductListView = ({ products }: ProductListProps) => {

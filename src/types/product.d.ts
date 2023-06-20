@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface Product {
   id: number;
   name: string;
   contents: string;
@@ -7,4 +7,13 @@ export interface IProduct {
   image_url?: string;
   price: number;
   isVisible: boolean;
+}
+
+export interface Cart {
+  id: number;
+  name: string;
+  productId: number;
+  price: number;
+  quantity: number;
+  image_url?: string;
 }

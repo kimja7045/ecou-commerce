@@ -1,6 +1,6 @@
 import ProductAPI from '@/api/product';
 import { TAKE_PRODUCT_COUNT } from '@constants/products';
-import { IProduct } from '@/types/product';
+import { Product } from '@/types/product';
 import { useQuery } from '@tanstack/react-query';
 
 const useGetProducts = ({
@@ -18,7 +18,7 @@ const useGetProducts = ({
     TAKE_PRODUCT_COUNT * (activePage - 1)
   }&take=${TAKE_PRODUCT_COUNT}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`;
 
-  const { data: products = [] } = useQuery<IProduct[]>(
+  const { data: products = [] } = useQuery<Product[]>(
     [queryKey],
     () =>
       ProductAPI.getProducts({
