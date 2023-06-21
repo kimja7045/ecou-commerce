@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types/product';
 import { CATEGORY_MAP } from '@/constants/products';
@@ -7,11 +7,12 @@ import { useRouter } from 'next/router';
 const ProductItem = ({ id, name, image_url, price, category_id }: Product) => {
   const router = useRouter();
 
+  const moveProductDetail = useCallback(() => {
+    router.push(`/products/${id}`);
+  }, [id, router]);
+
   return (
-    <div
-      className="cursor-pointer"
-      onClick={() => router.push(`/products/${id}`)}
-    >
+    <div className="cursor-pointer" onClick={moveProductDetail}>
       <Image
         className="rounded"
         src={image_url ?? ''}

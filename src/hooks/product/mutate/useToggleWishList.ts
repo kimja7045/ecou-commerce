@@ -26,7 +26,7 @@ const useToggleWishList = (productId: string) => {
         return { previous };
       },
       onError: (error, _, context) => {
-        console.log(error);
+        console.error(error);
         queryClient.setQueryData([WISHLIST_QUERY_KEY], context.previous);
       },
       onSuccess: () => {

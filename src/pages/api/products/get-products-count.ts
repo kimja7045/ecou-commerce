@@ -37,7 +37,7 @@ export default async function handler(
     );
     res.status(200).json(productsCount);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(400).json({ message: 'Failed' });
   }
 }

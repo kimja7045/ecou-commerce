@@ -18,11 +18,9 @@ async function main() {
   await prisma.products.deleteMany({});
 
   for (const p of productData) {
-    console.log(productData);
-    const product = await prisma.products.create({
+    await prisma.products.create({
       data: p,
     });
-    console.log(`Created id: ${product.id}`);
   }
 }
 
