@@ -20,6 +20,7 @@ export default async function handler(
     const categories = await getCategories();
     res.status(200).json(categories);
   } catch (err) {
+    console.log(req);
     console.error(err);
     res.status(400).json({ message: 'Failed' });
   }
