@@ -40,7 +40,7 @@ export default async function handler(
     const userInfo = await signUp(String(credential));
     res.status(200).json(userInfo);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(400).json({ message: 'Failed' });
   }
 }

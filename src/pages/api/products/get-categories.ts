@@ -21,7 +21,7 @@ export default async function handler(
     res.status(200).json(categories);
   } catch (err) {
     console.log(req);
-    console.log(err);
+    console.error(err);
     res.status(400).json({ message: 'Failed' });
   }
 }

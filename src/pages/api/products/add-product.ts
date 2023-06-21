@@ -5,7 +5,7 @@ async function addItem(name: string) {
   try {
     console.log(name);
   } catch (err) {
-    console.log('addItem err\n' + JSON.stringify(err));
+    console.error(err);
   }
 }
 
