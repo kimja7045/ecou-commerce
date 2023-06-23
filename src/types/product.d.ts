@@ -15,5 +15,5 @@ export interface Cart {
   productId: number;
   price: number;
   quantity: number;
-  image_url?: string;
+  imageUrl: string;
 }
