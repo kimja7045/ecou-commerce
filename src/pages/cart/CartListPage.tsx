@@ -9,15 +9,15 @@ const mockData: Cart[] = [
     productId: 100,
     price: 40000,
     quantity: 2,
-    image_url: '',
+    imageUrl: '',
   },
   {
     id: 2,
     name: '나이키 신발',
     productId: 100,
     price: 40000,
-    quantity: 2,
-    image_url: '',
+    quantity: 3,
+    imageUrl: '',
   },
 ];
 

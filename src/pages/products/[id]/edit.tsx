@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 // import { convertFromRaw, convertToRaw } from 'draft-js'
 // import { convertToRaw } from 'draft-js';
 // import { client } from '@/api/client';
-import ProductAPI from '@/api/product';
+import ProductAPI from '@/api/product/product';
 
 const images = [
   {

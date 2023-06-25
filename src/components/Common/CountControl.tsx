@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: `6px ${theme.spacing.xs}`,
+    padding: `6px`,
     borderRadius: theme.radius.sm,
     border: `1px solid ${
       theme.colorScheme === 'dark' ? 'transparent' : theme.colors.gray[3]
@@ -64,7 +64,6 @@ export function CountControl({
 }: QuantityInputProps) {
   const { classes } = useStyles();
   const handlers = useRef<NumberInputHandlers>(null);
-  //   const [value, setValue] = useState<number | ''>(1);
 
   return (
     <div className={classes.wrapper}>

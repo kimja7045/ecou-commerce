@@ -3,11 +3,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useCallback, useState } from 'react';
-import ProductAPI from '@/api/product';
+import ProductAPI from '@/api/product/product';
 import { products } from '@prisma/client';
-import useGetWishList from '@hooks/product/query/useGetWishList';
+import { useGetWishList } from '@/api/product/query';
 import ProductDetailView from '@components/Product/ProductDetail/ProductDetailView';
-import useToggleWishList from '@/hooks/product/mutate/useToggleWishList';
+import useToggleWishList from '@/api/product/mutate/useToggleWishList';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const productId = context.params?.id;

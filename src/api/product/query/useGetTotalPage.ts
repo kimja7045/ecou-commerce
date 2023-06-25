@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { client } from '@/api/client';
 import { TAKE_PRODUCT_COUNT } from '@/constants/products';
 
-const useGetTotalPage = ({
+export const useGetTotalPage = ({
   selectedCategory,
   debouncedKeyword,
 }: {
@@ -24,5 +24,3 @@ const useGetTotalPage = ({
     totalPage: Math.ceil(totalPage / TAKE_PRODUCT_COUNT),
   };
 };
-
-export default useGetTotalPage;

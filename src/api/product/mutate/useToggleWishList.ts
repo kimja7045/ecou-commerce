@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { client } from '@/api/client';
 import { useCallback } from 'react';
-import { WISHLIST_QUERY_KEY } from '@constants/Product/queryKey';
+
+const WISHLIST_QUERY_KEY = `products/get-wishList`;
 
 const useToggleWishList = (productId: string) => {
   const queryClient = useQueryClient();

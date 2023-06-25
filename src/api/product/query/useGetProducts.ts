@@ -1,9 +1,9 @@
-import ProductAPI from '@/api/product';
+import ProductAPI from '@/api/product/product';
 import { TAKE_PRODUCT_COUNT } from '@constants/products';
 import { Product } from '@/types/product';
 import { useQuery } from '@tanstack/react-query';
 
-const useGetProducts = ({
+export const useGetProducts = ({
   activePage,
   selectedCategory,
   selectedFilter = '',
@@ -37,5 +37,3 @@ const useGetProducts = ({
     products,
   };
 };
-
-export default useGetProducts;

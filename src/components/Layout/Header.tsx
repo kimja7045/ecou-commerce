@@ -20,7 +20,7 @@ const Header = () => {
         return;
       }
 
-      router.push(`${path}`);
+      router.push(path);
     },
     [router, session],
   );

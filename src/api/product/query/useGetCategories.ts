@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { categories } from '@prisma/client';
 import { client } from '@/api/client';
 
-const useGetCategories = () => {
+export const useGetCategories = () => {
   const queryKey = `products/get-categories`;
   const { data: categoryList = [] } = useQuery<
     { data: categories[] },
@@ -16,5 +16,3 @@ const useGetCategories = () => {
     categoryList,
   };
 };
-
-export default useGetCategories;
