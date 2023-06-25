@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/api/client';
-import { WISHLIST_QUERY_KEY } from '../../../constants/Product/queryKey';
+
+const WISHLIST_QUERY_KEY = `products/get-wishList`;
 
 const useGetWishList = () => {
   const { data: wishList = [] } = useQuery<
