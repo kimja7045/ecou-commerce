@@ -1,4 +1,4 @@
-import { client } from './client';
+import { client } from '@/api/client';
 import { Product } from '@/types/product';
 
 const ProductAPI = {

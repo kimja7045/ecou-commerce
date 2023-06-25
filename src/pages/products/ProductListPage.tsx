@@ -6,9 +6,11 @@ import PaginationList from '@/components/Product/ProductList/PaginationList';
 import ListSelect from '@/components/Product/ProductList/ListSelect';
 import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
-import useGetProducts from '@/hooks/product/query/useGetProducts';
-import useGetCategories from '@hooks/product/query/useGetCategories';
-import useGetTotalPage from '@/hooks/product/query/useGetTotalPage';
+import {
+  useGetCategories,
+  useGetProducts,
+  useGetTotalPage,
+} from '@/api/product/query';
 
 export default function ProductListPage() {
   const [activePage, setActivePage] = useState<number>(1);

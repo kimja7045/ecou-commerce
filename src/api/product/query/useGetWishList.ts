@@ -3,7 +3,7 @@ import { client } from '@/api/client';
 
 const WISHLIST_QUERY_KEY = `products/get-wishList`;
 
-const useGetWishList = () => {
+export const useGetWishList = () => {
   const { data: wishList = [] } = useQuery<
     { data: string[] },
     unknown,
@@ -16,5 +16,3 @@ const useGetWishList = () => {
     wishList,
   };
 };
-
-export default useGetWishList;
