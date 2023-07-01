@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import ProductAPI from '@/api/product/product';
 import { products } from '@prisma/client';
 import { useGetWishList } from '@/api/product/query';
-import ProductDetailView from '@components/Product/ProductDetail/ProductDetailView';
+import ProductDetailView from '@/components/product/ProductDetail/ProductDetailView';
 import useToggleWishList from '@/api/product/mutate/useToggleWishList';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
