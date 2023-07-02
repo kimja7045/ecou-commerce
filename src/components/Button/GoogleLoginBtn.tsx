@@ -11,7 +11,7 @@ export default function GoogleLoginBtn() {
     );
   }
   return (
-    <div>
+    <div className="flex flex-col">
       <p>Not signed in</p>
       <BaseButton onClick={() => signIn()}>Sign in</BaseButton>
     </div>
