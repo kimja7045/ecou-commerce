@@ -3,17 +3,19 @@ import { TAKE_PRODUCT_COUNT } from '@constants/products';
 import { Product } from '@/types/product';
 import { useQuery } from '@tanstack/react-query';
 
+interface useGetProductsProps {
+  activePage?: number;
+  selectedCategory?: string;
+  selectedFilter?: string | null;
+  debouncedKeyword?: string;
+}
+
 export const useGetProducts = ({
-  activePage,
-  selectedCategory,
+  activePage = 1,
+  selectedCategory = '-1',
   selectedFilter = '',
-  debouncedKeyword,
-}: {
-  activePage: number;
-  selectedCategory: string;
-  selectedFilter: string | null;
-  debouncedKeyword: string;
-}) => {
+  debouncedKeyword = '',
+}: useGetProductsProps) => {
   const queryKey = `products?skip=${
     TAKE_PRODUCT_COUNT * (activePage - 1)
   }&take=${TAKE_PRODUCT_COUNT}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`;
