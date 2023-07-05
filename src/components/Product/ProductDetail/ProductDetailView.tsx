@@ -9,8 +9,8 @@ import {
 } from 'react-icons/ai';
 import { CATEGORY_MAP } from '@constants/products';
 import Image from 'next/image';
-import { CartType } from '@pages/products/[id]';
-import { CountControl } from '../../Common/CountControl';
+import { CartType } from '@/pages/product/[id]';
+import { CountControl } from '@/components/common/CountControl';
 import { useState } from 'react';
 
 interface ProductDetailViewProps {
