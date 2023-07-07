@@ -7,7 +7,7 @@ interface CartListProps {
   cartList: Cart[];
 }
 
-const CartList = ({ cartList }: CartListProps) => {
+const CartListView = ({ cartList }: CartListProps) => {
   return (
     <Wrapper>
       {cartList.length === 0 ? (
@@ -31,7 +31,7 @@ const CartList = ({ cartList }: CartListProps) => {
   );
 };
 
-export default CartList;
+export default CartListView;
 
 const Wrapper = styled.div``;
 
