@@ -1,7 +1,7 @@
 import React from 'react';
 import { Cart } from '@/types/product';
 import Image from 'next/image';
-import { CountControl } from '@/components/common/CountControl';
+import { CountControl } from '@/components/Common/CountControl';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
 

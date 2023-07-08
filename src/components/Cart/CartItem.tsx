@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import useCart from '@/hooks/cart/useCart';
-import CartItemView from '@/components/cart/CartItemView';
+import CartItemView from '@/components/Cart/CartItemView';
 import { Cart } from '@/types/product';
 
 const CartItem = ({ cart }: { cart: Cart }) => {

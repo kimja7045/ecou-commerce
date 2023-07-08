@@ -1,4 +1,4 @@
-import CartListView from '@/components/cart/CartListView';
+import CartListView from '@/components/Cart/CartListView';
 import useCart from '@/hooks/cart/useCart';
 import { useEffect } from 'react';
 

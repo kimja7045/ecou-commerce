@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import ProductAPI from '@/api/product/product';
 import { products } from '@prisma/client';
 import { useGetWishList } from '@/api/product/query';
-import ProductDetailView from '@/components/product/ProductDetail/ProductDetailView';
+import ProductDetailView from '@/components/Product/ProductDetail/ProductDetailView';
 import useToggleWishList from '@/api/product/mutate/useToggleWishList';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -83,7 +83,7 @@ export default function ProductDetailPage(props: {
         product={product}
         isWished={isWished}
         imageIndex={imageIndex}
-        onClickImage={(imageIdx) => onClickImage(imageIdx)}
+        onClickImage={(imageIdx: number) => onClickImage(imageIdx)}
         onToggleWished={toggleWished}
         validate={(type: CartType) => checkCartValidate(type)}
       />
