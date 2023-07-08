@@ -1,4 +1,4 @@
-import GoogleLoginBtn from '@/components/Button/GoogleLoginBtn';
+import GoogleLoginBtn from '@/components/auth/GoogleLoginBtn';
 import styled from '@emotion/styled';
 import React from 'react';
 
