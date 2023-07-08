@@ -8,7 +8,7 @@ const ProductItem = ({ id, name, image_url, price, category_id }: Product) => {
   const router = useRouter();
 
   const moveProductDetail = useCallback(() => {
-    router.push(`/products/${id}`);
+    router.push(`/product/${id}`);
   }, [id, router]);
 
   return (

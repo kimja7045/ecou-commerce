@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import useCart from '@/hooks/cart/useCart';
+import CartItemView from '@/components/cart/CartItemView';
 import { Cart } from '@/types/product';
-import Image from 'next/image';
-import { CountControl } from '../Common/CountControl';
 
-const CartItem = ({ name, price, imageUrl, quantity }: Cart) => {
-  const [itemCount, setItemCount] = useState<number | undefined>(quantity);
+const CartItem = ({ cart }: { cart: Cart }) => {
+  const { handleDelete } = useCart();
+  const [itemCount, setItemCount] = useState<number | undefined>(cart.quantity);
+
+  const totalPrice = useMemo(() => {
+    if (itemCount) {
+      return itemCount * cart?.price;
+    }
+
+    return 0;
+  }, [cart?.price, itemCount]);
 
   return (
-    <div className="w-full flex p-4 border-b">
-      <Image src={imageUrl} alt={name} width={155} height={195} />
-      <div className="flex flex-col ml-4">
-        <span className="font-semibold mb-2">{name}</span>
-        <span className="mb-auto">
-          가격: {price.toLocaleString('ko-kr')} 원
-        </span>
-        <CountControl value={itemCount} setValue={setItemCount} max={20} />
-      </div>
-    </div>
+    <CartItemView
+      cart={cart}
+      totalPrice={totalPrice}
+      itemCount={itemCount}
+      onChangeItemCount={setItemCount}
+      handleDelete={() => handleDelete(cart.id)}
+    />
   );
 };
 

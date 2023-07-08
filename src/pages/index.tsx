@@ -1,5 +1,5 @@
 // import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import ProductListPage from './products';
+import ProductListPage from './product';
 
 const Home = () => {
   // const {reset} = useQueryErrorResetBoundary();
