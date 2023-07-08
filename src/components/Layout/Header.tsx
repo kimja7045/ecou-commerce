@@ -37,7 +37,7 @@ const Header = () => {
         <AiOutlineShoppingCart
           className="mr-4 cursor-pointer"
           size={26}
-          onClick={() => moveNextPage('/cart')}
+          onClick={() => router.push('/cart')}
         />
         {session ? (
           <Image

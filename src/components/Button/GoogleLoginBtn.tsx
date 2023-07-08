@@ -1,19 +1,22 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import BaseButton from '@components/Button/BaseButton';
+import Button from '@/components/Common/Button';
+
 export default function GoogleLoginBtn() {
   const { data: session } = useSession();
+
   if (session) {
     return (
       <div>
         <p>Signed in as {session.user?.email}</p>
-        <button onClick={() => signOut()}>Sign out</button>
+        <button onClick={() => signOut()}>로그아웃</button>
       </div>
     );
   }
+
   return (
-    <div>
+    <div className="flex flex-col">
       <p>Not signed in</p>
-      <BaseButton onClick={() => signIn()}>Sign in</BaseButton>
+      <Button onClick={() => signIn()}>로그인</Button>
     </div>
   );
 }
