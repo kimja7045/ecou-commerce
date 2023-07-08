@@ -2,6 +2,11 @@ import { ProductListView } from '@/components/product/ProductList/ProductListVie
 import { Product } from '@/types/product';
 import { render } from '@testing-library/react';
 
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+useRouter.mockImplementation(() => ({
+  pathname: '/',
+}));
+
 const products: Product[] = [
   {
     id: 1,

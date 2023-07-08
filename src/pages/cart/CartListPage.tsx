@@ -1,4 +1,4 @@
-import CartList from '@/components/cart/CartList';
+import CartListView from '@/components/cart/CartListView';
 import useCart from '@/hooks/cart/useCart';
 import { useEffect } from 'react';
 
@@ -11,7 +11,7 @@ export default function CartListPage() {
 
   return (
     <div>
-      <CartList cartList={cartList} />
+      <CartListView cartList={cartList} />
     </div>
   );
 }
