@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Button from '@/components/Common/Button';
+import Button from '@/components/Common/Button/Button';
 
 interface CartInfoViewProps {
   totalPrice: number;
