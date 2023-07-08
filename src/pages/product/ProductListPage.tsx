@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
-import { ProductListView } from '@/components/product/ProductList/ProductListView';
+import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { FILTER_LIST } from '@/constants/products';
-import CategoryList from '@/components/product/ProductList/CategoryList';
-import PaginationList from '@/components/product/ProductList/PaginationList';
-import ListSelect from '@/components/product/ProductList/ListSelect';
-import SearchInput from '@/components/product/ProductList/SearchInput';
+import CategoryList from '@/components/Product/ProductList/CategoryList';
+import PaginationList from '@/components/Product/ProductList/PaginationList';
+import ListSelect from '@/components/Product/ProductList/ListSelect';
+import SearchInput from '@/components/Product/ProductList/SearchInput';
 import useDebounce from '@/hooks/common/useDebounce';
 import {
   useGetCategories,

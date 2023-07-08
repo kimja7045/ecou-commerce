@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import Button from '@/components/common/Button';
+import Button from '@/components/Common/Button/Button';
 
 export default function GoogleLoginBtn() {
   const { data: session } = useSession();

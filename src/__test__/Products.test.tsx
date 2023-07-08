@@ -1,4 +1,4 @@
-import { ProductListView } from '@/components/product/ProductList/ProductListView';
+import { ProductListView } from '@/components/Product/ProductList/ProductListView';
 import { Product } from '@/types/product';
 import { render } from '@testing-library/react';
 

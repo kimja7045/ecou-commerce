@@ -1,7 +1,7 @@
 import { Cart } from '@/types/product';
 import styled from '@emotion/styled';
-import CartInfoView from '@/components/cart/CartInfoView';
-import CartItem from './CartItem';
+import CartInfoView from '@/components/Cart/CartInfoView';
+import CartItem from '@/components/Cart/CartItem';
 
 interface CartListProps {
   cartList: Cart[];
