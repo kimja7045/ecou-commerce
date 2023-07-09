@@ -34,9 +34,12 @@ const useCart = () => {
     [cartList],
   );
 
-  const handleDelete = useCallback((id: number) => {
-    console.log(id);
-  }, []);
+  const handleDelete = useCallback(
+    (id: number) => {
+      setCartList(cartList.filter((cart) => cart.id !== id));
+    },
+    [cartList],
+  );
 
   const handleUpdate = useCallback((id: number) => {
     console.log(id);
